@@ -1,15 +1,19 @@
-import React from 'react';
-import Component from 'react';
+import React, { Component } from 'react';
+// import Component from 'react';
+import ProductBox from './components/products/productbox.jsx'
 import $ from 'jquery';
 
+
 export default class Cart extends React.Component {
-  // getInitialState() {
-  //   return {data: []};
-  // }
-  componentWillMount() {
-    this.state = {data: []}
+
+  constructor(props) {
+    super(props)
+    this.state = {data: {products: []}}
+  }
+
+  componentDidMount() {
     this.loadCartFromServer()
-    setInterval(this.loadCartFromServer, this.props.interval);
+    setInterval(() => this.loadCartFromServer(), this.props.interval);
   }
 
   loadCartFromServer() {
@@ -17,21 +21,21 @@ export default class Cart extends React.Component {
       url: this.props.url,
       dataType: 'json',
       cache: false,
-      success: function(data) {
-        this.setState({data: data})
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    })
+      success: data => this.setState({data: data.cart}),
+      error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
+    });
   }
 
 
   
   render() {
-    console.log(this.state.data)
+    if(!this.state) {
+      return <div><h1>Loading....</h1></div>
+    }
+
     return (
       <div className="cart">
+        <ProductBox data={this.state.data.products} />
         "Hello!"
       </div>
       )
