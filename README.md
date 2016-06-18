@@ -1,3 +1,4 @@
+
 ## React app with hot loading
 
 Using the react hot boilerplate
@@ -166,3 +167,6 @@ The App component is the top level component.
 #### Step6: "Actions Up" - implement delete contact
 
 ... using set state to alter this.state.contacts in app.
+=======
+# tucan-react
+>>>>>>> c1363d29cd6fb8f8a1cd757ae52db5f9d60daa36
