@@ -7,7 +7,7 @@ import $ from 'jquery';
 // getcontacts is actually calling a getcontacts FUNCTION inside fake_api.js that is setting the contacts
 // variable to a hash of all the contacts. Both contacts and filteredcontacts are initially set to all
 // contacts.
-export default class App extends Component {
+export default class Cart extends Component {
 
   // loadCommentsFromServer() {
   //   // AJAX
