@@ -8,7 +8,8 @@ export default class Product extends React.Component {
         <div id={this.props.key}>
           <h2><a href={this.props.product.url}>{this.props.product.display_name}</a></h2>
           <img src={this.props.product.image} />
-          <p>{this.props.product.description}</p>
+          <p>Price: ${this.props.product.price}</p>
+          <p>Quantity: {this.props.product.quantity}</p>
 
         </div>
     )
