@@ -9,10 +9,10 @@ import $, { ajax } from 'jquery';
 
 export default class Cart extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { data: { products: [] }, otherData: {contributors: []} };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { data: { products: [] }, otherData: {contributors: []} };
+  // }
 
   componentDidMount() {
     this.loadCartFromServer()
@@ -33,7 +33,10 @@ export default class Cart extends Component {
       url: this.props.url,
       dataType: 'json',
       cache: false,
-      success: data => this.setState({data: data.cart, otherData: data}),
+      success: data => {
+        // debugger
+        this.setState({data: data})
+      },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });
   }
@@ -44,11 +47,14 @@ export default class Cart extends Component {
     if(!this.state) {
       return <div><h1>Loading....</h1></div>
     }
-
     return (
       <div className="cart">
-        <ProductBox data={this.state.data.products} />
-        <ProgressBox data={this.state.data} otherData={this.state.otherData} />
+        <ProductBox products={this.state.data.cart.products} />
+        <ProgressBox 
+          contributors={this.state.data.contributors.length}
+          remainingBalance={this.state.data.remaining_balance}
+          totalCost={this.state.data.cart.total}
+          progress={this.state.data.cart.progress} />
       </div>
       )
   }

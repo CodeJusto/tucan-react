@@ -6,13 +6,13 @@ export default class ProgressBox extends Component {
     // const totalCost = {this.props.data.total}
     // const remainingBalance = this.props.data.remainingBalance
     // const contributors = this.props.data.paid_contributors
-    console.log(this.props.otherData.contributors)
+
     return (
       <div>
-        <p>Total cost: {this.props.data.total}</p>
-        <p>Remaining balance: {this.props.otherData.remaining_balance}</p>
-        <p>Contributors: {this.props.otherData.contributors.length}</p>
-        <p>Progress: {this.props.data.progress}%</p>
+        <p>Total cost: {this.props.totalCost}</p>
+        <p>Remaining balance: ${this.props.remainingBalance}</p>
+        <p>Contributors: {this.props.contributors}</p>
+        <p>Progress: {this.props.progress}% of ${this.props.totalCost} goal</p>
       </div>
       )
   }
