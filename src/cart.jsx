@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProductBox from './components/products/productbox.jsx'
 import ProgressBox from './components/progress/progressbox.jsx'
 import ContributorsBox from './components/contributors/contributorsbox.jsx'
+import PaymentsBox from './components/payments/paymentsbox.jsx'
 import $, { ajax } from 'jquery';
 
 // (function(b,c){var $=b.jQuery||b.Cowboy||(b.Cowboy={}),a;$.throttle=a=function(e,f,j,i){var h,d=0;if(typeof f!=="boolean"){i=j;j=f;f=c}function g(){var o=this,m=+new Date()-d,n=arguments;function l(){d=+new Date();j.apply(o,n)}function k(){h=c}if(i&&!h){l()}h&&clearTimeout(h);if(i===c&&m>e){l()}else{if(f!==true){h=setTimeout(i?k:l,i===c?e-m:e)}}}if($.guid){g.guid=j.guid=j.guid||$.guid++}return g};$.debounce=function(d,e,f){return f===c?a(d,e,false):a(d,f,e!==false)}})({jQuery: $});
@@ -58,6 +59,7 @@ export default class Cart extends Component {
           totalCost={this.state.data.cart.total}
           progress={this.state.data.cart.progress} />
         <ContributorsBox contributors={this.state.data.contributors} organizer={this.state.data.organizer} /> 
+        <PaymentsBox payments={this.state.data.cart.payments} />
       </div>
       )
   }

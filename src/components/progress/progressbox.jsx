@@ -9,6 +9,7 @@ export default class ProgressBox extends Component {
 
     return (
       <div>
+        <h3>Progress</h3>
         <p>Total cost: {this.props.totalCost}</p>
         <p>Remaining balance: ${this.props.remainingBalance}</p>
         <p>Contributors: {this.props.contributors}</p>
