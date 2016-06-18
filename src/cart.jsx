@@ -59,24 +59,28 @@ export default class Cart extends Component {
 
     function loginCheck(cart) {
       if (cookie()) {
-        debugger
-      return (
-        <div className="Page">
-          <div className="navbar">
-            <Navbar />  
-          </div>
-          <div className="cart">
-            <ProductBox products={cart.state.data.cart.products} />
-            <ProgressBox 
-              contributors={cart.state.data.contributors.length}
-              remainingBalance={cart.state.data.remaining_balance}
-              totalCost={cart.state.data.cart.total}
-              progress={cart.state.data.cart.progress} />
-            <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} /> 
-            <PaymentsBox payments={cart.state.data.cart.payments} />
-          </div>
-        </div>
-      ) 
+        if (cart.state.type === "dashboard") {
+          "I am a dashboard!"
+        } else {
+          return (
+            <div className="Page">
+              <div className="navbar">
+                <Navbar />  
+              </div>
+              <div className="cart">
+                <ProductBox products={cart.state.data.cart.products} />
+                <ProgressBox 
+                  contributors={cart.state.data.contributors.length}
+                  remainingBalance={cart.state.data.remaining_balance}
+                  totalCost={cart.state.data.cart.total}
+                  progress={cart.state.data.cart.progress} />
+                <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} /> 
+                <PaymentsBox payments={cart.state.data.cart.payments} />
+              </div>
+            </div>
+          ) 
+        };
+
       } else {
         return (
           <Register />

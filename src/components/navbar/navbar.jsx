@@ -13,7 +13,7 @@ export default class Navbar extends Component {
   
   render() {
 
-        var cookie = function getCookie() {
+    var cookie = function getCookie() {
       var re = new RegExp('user_name' + "=([^;]+)");
       var value = re.exec(document.cookie);
       return ((value != null) ? "You are now signed in as " + unescape(value[1]) : "You do not have access to this page").replace('+', ' ')
