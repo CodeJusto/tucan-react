@@ -14,7 +14,7 @@ var PaymentForm = React.createClass({
       amount: ''
     };
   },
-  
+
   onScriptLoaded: function() {
     if (!PaymentForm.getStripeToken) {
 
@@ -67,7 +67,7 @@ var PaymentForm = React.createClass({
         <form onSubmit={this.handleSubmit} >
         <h2>Make a payment</h2>
           <span>{ this.state.paymentError }</span><br />
-          <input type='text' placeholder='amount' value={this.state.amount} onChange={this.handleAmountChange} /><br />
+          <input type='number' step="any" placeholder='amount' value={this.state.amount} onChange={this.handleAmountChange} /><br />
           <input type='text' data-stripe='number' placeholder='credit card number' /><br />
           <input type='text' data-stripe='exp-month' placeholder='expiration month' /><br />
           <input type='text' data-stripe='exp-year' placeholder='expiration year' /><br />
