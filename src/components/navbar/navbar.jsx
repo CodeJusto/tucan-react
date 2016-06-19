@@ -19,10 +19,18 @@ export default class Navbar extends Component {
       return ((value != null) ? "You are now signed in as " + unescape(value[1]) : "You do not have access to this page").replace('+', ' ')
       
     }
+
+    var checkMyDashboard = function dashboardMode() {
+      console.log(this.props.dashboard)
+      this.props.dashboard(true)
+    }
+
+    var tempThis = this
    
     return (
       <div className="navbar">
        <User userCheck={cookie()}/>
+       <span onClick={checkMyDashboard.bind(this)}>View all carts</span>
       </div>
       )
   }

@@ -5,6 +5,7 @@ import ContributorsBox from './components/contributors/contributorsbox.jsx'
 import PaymentsBox from './components/payments/paymentsbox.jsx'
 import Navbar from './components/navbar/navbar.jsx'
 import Register from './components/register.jsx'
+import UserCart from './components/index/usercart.jsx'
 import $, { ajax } from 'jquery';
 
 // (function(b,c){var $=b.jQuery||b.Cowboy||(b.Cowboy={}),a;$.throttle=a=function(e,f,j,i){var h,d=0;if(typeof f!=="boolean"){i=j;j=f;f=c}function g(){var o=this,m=+new Date()-d,n=arguments;function l(){d=+new Date();j.apply(o,n)}function k(){h=c}if(i&&!h){l()}h&&clearTimeout(h);if(i===c&&m>e){l()}else{if(f!==true){h=setTimeout(i?k:l,i===c?e-m:e)}}}if($.guid){g.guid=j.guid=j.guid||$.guid++}return g};$.debounce=function(d,e,f){return f===c?a(d,e,false):a(d,f,e!==false)}})({jQuery: $});
@@ -18,10 +19,21 @@ export default class Cart extends Component {
   //   this.state = { data: { products: [] }, otherData: {contributors: []} };
   // }
 
-  componentDidMount() {
-    this.loadCartFromServer()
-    setInterval(() => this.loadCartFromServer(), this.props.interval);
+  pageDeterminator() {
+    if (this.state === null) {
+      console.log('waiting')
+    } else if (this.state.dashboard === true) {
+      console.log("State is dashboard")
+        this.loadUserInfo()   
+    } else {
+      console.log("State is cart")
+        this.loadCartFromServer()
+    }
+  }
 
+  componentDidMount() {
+    this.loadCartFromServer() 
+     setInterval(() => this.pageDeterminator(), this.props.interval);
     // $(window).on('resize', () => console.log('Raw resize'))
     // $(window).on('resize', $.debounce(100, () => console.log('Debounced resize')))
   }
@@ -32,13 +44,25 @@ export default class Cart extends Component {
   //   }
   // }
 
-  loadCartFromServer() {
+  loadUserInfo() {
     ajax({
-      url: this.props.url,
+      url: "http://localhost:4000/api/carts",
       dataType: 'json',
       cache: false,
       success: data => {
-        // debugger
+        console.log(data)
+        this.setState({userData: data})
+      },
+      error: (xhr, status, err) => console.log(this.props.url, status, err.toString())
+    });
+  }
+
+  loadCartFromServer() {
+    ajax({
+      url: this.props.cartUrl,
+      dataType: 'json',
+      cache: false,
+      success: data => {
         this.setState({data: data})
       },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
@@ -46,26 +70,58 @@ export default class Cart extends Component {
   }
   
   render() {
+    const cart = this;
     if(!this.state) {
       return <div><h1>Loading....</h1></div>
-    }
+    } //if statemnent closed
 
     var cookie = function getCookie() {
       var re = new RegExp('user_name' + "=([^;]+)");
       var value = re.exec(document.cookie);
       return ((value != null) ? ("You are now signed in as " + unescape(value[1])).replace('+', ' ') : false)
       
-    }
+    } //cookie closed
+
+    var addDashboard = function addDashboard() {
+      console.log("In the parent!")
+      cart.setState({dashboard: true})
+      // unmount cart
+      // mount dashboard
+      console.log(cart.state)
+    } // addDashboard
+
+    var removeDashboard = function removeDashboard() {
+      console.log("Removing dashboard")
+      // unmount dashboard
+      // mount cart
+      cart.setState({dashboard: false})
+    } //remove dashboard
+
+    function cartList(cart) {
+      console.log(cart.state)
+      const cartData = cart.state.userData.user.carts.map(cart => <UserCart key={cart.id} cartName={cart.name}/> )
+      return (
+          <div>{cartData}</div>
+      )
+    } // cartlist closed
 
     function loginCheck(cart) {
       if (cookie()) {
-        if (cart.state.type === "dashboard") {
-          "I am a dashboard!"
+        if (cart.state.dashboard === true) {
+          return(
+            <div className="dashboard">
+              <h1>"I am a dashboard!"</h1>
+              <div className="CartList">
+                {cartList(cart)}
+              </div>
+              <span onClick={removeDashboard}>Return to last cart</span>
+            </div>
+            ) 
         } else {
           return (
             <div className="Page">
               <div className="navbar">
-                <Navbar />  
+                <Navbar dashboard={addDashboard.bind(this)}/>  
               </div>
               <div className="cart">
                 <ProductBox products={cart.state.data.cart.products} />
@@ -79,23 +135,19 @@ export default class Cart extends Component {
               </div>
             </div>
           ) 
-        };
-
+        }; // inner else statement
       } else {
         return (
           <Register />
           )
-      }
-
-
-    } 
-        const cart = this
+      } // else statement
+    } //logincheck closed 
 
     return (
       <div>
         {loginCheck(cart)}
       </div>
-      )
-  
-  }
-}
+      ) 
+      } //render closed
+} // class closed
+
