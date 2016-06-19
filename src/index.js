@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Cart from './cart.jsx';
 import $ from 'jquery';
+require('moment');
 require('./styles/main.less')
 
 

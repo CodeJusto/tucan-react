@@ -5,7 +5,7 @@ export default class Payments extends Component {
   render() {
     return (
       <div id={this.props.key}>
-        <p>{this.props.payee} has paid ${this.props.amount} on {this.props.date}</p>
+        <p><b>{this.props.payee}</b> paid ${this.props.amount} {this.props.date}</p>
       </div>
 
       )

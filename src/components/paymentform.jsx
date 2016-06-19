@@ -14,7 +14,7 @@ var PaymentForm = React.createClass({
       amount: ''
     };
   },
-
+  
   onScriptLoaded: function() {
     if (!PaymentForm.getStripeToken) {
 
