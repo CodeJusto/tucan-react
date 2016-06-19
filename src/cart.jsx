@@ -72,9 +72,12 @@ export default class Cart extends Component {
           <div className="cart">
             <ProductBox products={cart.state.data.cart.products} />
             <ProgressBox 
+              created_at={cart.state.data.cart.created_at}
+              expiry={cart.state.data.cart.expiry}
               contributors={cart.state.data.contributors.length}
               remainingBalance={cart.state.data.remaining_balance}
               totalCost={cart.state.data.cart.total}
+              totalPayment={cart.state.data.cart.total_payment}
               progress={cart.state.data.cart.progress} />
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} /> 
             <PaymentsBox payments={cart.state.data.cart.payments} />
