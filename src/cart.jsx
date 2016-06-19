@@ -57,6 +57,7 @@ export default class Cart extends Component {
       var re = new RegExp('user_name' + "=([^;]+)");
       var value = re.exec(document.cookie);
       return ((value != null) ? ("You are now signed in as " + unescape(value[1])).replace('+', ' ') : false)
+
     }
 
     function loginCheck(cart) {
