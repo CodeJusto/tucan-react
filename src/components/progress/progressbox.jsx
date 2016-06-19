@@ -5,20 +5,16 @@ export default class ProgressBox extends Component {
     const moment = require('moment');
     const now = moment().format("MMM Do, YYYY");
     const numeral = require('numeral');
-    // const progressDetails = this.props.otherData
-    // const totalCost = {this.props.data.total}
-    // const remainingBalance = this.props.data.remainingBalance
-    // const contributors = this.props.data.paid_contributors
 
     return (
       <div>
         <h3>Progress</h3>
-        <p>Target: {numeral(this.props.totalCost).format('$0,0.00')}</p>
-        <p>Balance remaining: {numeral(this.props.remainingBalance).format('$0,0.00')}</p>
-        <p>Total contributors: {(parseFloat(this.props.contributors) + 1)}</p>
-        <p>Progress: {numeral(this.props.progress).format('0%')}</p>
-        <p>Expires: {moment(this.props.expiry).endOf('minute').fromNow()}</p>
-        <p>Payments received: {numeral(this.props.totalPayment).divide(100).format('$0,0.00')}</p>
+        <p><b>Target:</b> {numeral(this.props.totalCost).divide(100).format('$0,0.00')}</p>
+        <p><b>Balance remaining:</b> {numeral(this.props.remainingBalance).divide(100).format('$0,0.00')}</p>
+        <p><b>Total contributors:</b> {(parseFloat(this.props.contributors) + 1)}</p>
+        <p><b>Progress:</b> {numeral(this.props.progress).divide(100).format('0%')}</p>
+        <p><b>Expires:</b> {moment(this.props.expiry).endOf('minute').fromNow()}</p>
+        <p><b>Payments received:</b> {numeral(this.props.totalPayment).divide(100).format('$0,0.00')}</p>
       </div>
       )
   }

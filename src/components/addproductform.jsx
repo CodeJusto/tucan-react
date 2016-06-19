@@ -27,6 +27,7 @@ var AddProductForm = React.createClass({
     e.preventDefault();
     $.ajax({
           type: 'POST',
+          dataType: 'json',
           url: 'http://localhost:4000/api/carts/' + this.props.cart_id + '/products',
           data: { display_name: this.state.display_name, url: this.state.url, cart_id: this.props.cart_id, quantity: this.state.quantity }
     });
@@ -40,7 +41,6 @@ var AddProductForm = React.createClass({
           <input type="text" name="display_name" placeholder="Display name" onChange={this.handleNameChange} />
           <input type="text" name="url" placeholder="Product URL" onChange={this.handleUrlChange} />
           <input type="number" name="quantity" placeholder="Quantity" onChange={this.handleQuantityChange} />
-          <input type="hidden" value={this.props.cart_id} />
           <input type="submit" value="Add product" />
 
           </form>
