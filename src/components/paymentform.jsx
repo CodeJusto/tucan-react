@@ -47,7 +47,7 @@ var PaymentForm = React.createClass({
         $.ajax({
           type: 'POST',
           url: 'http://localhost:4000/api/charges',
-          data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.state.cart_id }
+          data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.state.cart_id, user_id: parseFloat(this.props.user_id) }
         });
       }
     });

@@ -42,7 +42,7 @@ export default class Cart extends Component {
       cache: false,
       success: data => {
         // debugger
-        this.setState({data: data})
+        this.setState({data: data});
       },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });
@@ -75,7 +75,7 @@ export default class Cart extends Component {
               progress={cart.state.data.cart.progress} />
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} /> 
             <PaymentsBox payments={cart.state.data.cart.payments} />
-            <PaymentForm cart_id={cart.state.data.cart.id} min_pay={cart.state.data.custom_minimum_payment} />
+            <PaymentForm user_id={cart.state.data.current_user.id} cart_id={cart.state.data.cart.id} min_pay={cart.state.data.custom_minimum_payment} />
             <AddProductForm cart_id={cart.state.data.cart.id} />
           </div>
         </div>
