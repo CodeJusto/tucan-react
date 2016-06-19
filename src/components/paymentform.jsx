@@ -63,15 +63,18 @@ var PaymentForm = React.createClass({
       return <div>Payment Complete!</div>;
     }
     else {
-      return (<form onSubmit={this.handleSubmit} >
-        <span>{ this.state.paymentError }</span><br />
-        <input type='text' placeholder='amount' value={this.state.amount} onChange={this.handleAmountChange} /><br />
-        <input type='text' data-stripe='number' placeholder='credit card number' /><br />
-        <input type='text' data-stripe='exp-month' placeholder='expiration month' /><br />
-        <input type='text' data-stripe='exp-year' placeholder='expiration year' /><br />
-        <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
-        <input disabled={this.state.submitDisabled} type='submit' value='Purchase' />
-      </form>);
+      return (
+        <form onSubmit={this.handleSubmit} >
+        <h2>Make a payment</h2>
+          <span>{ this.state.paymentError }</span><br />
+          <input type='text' placeholder='amount' value={this.state.amount} onChange={this.handleAmountChange} /><br />
+          <input type='text' data-stripe='number' placeholder='credit card number' /><br />
+          <input type='text' data-stripe='exp-month' placeholder='expiration month' /><br />
+          <input type='text' data-stripe='exp-year' placeholder='expiration year' /><br />
+          <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
+          <input disabled={this.state.submitDisabled} type='submit' value='Purchase' />
+        </form>
+      );
     }
   }
 });
