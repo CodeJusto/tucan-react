@@ -3,6 +3,7 @@ import ProductBox from './components/products/productbox.jsx'
 import ProgressBox from './components/progress/progressbox.jsx'
 import ContributorsBox from './components/contributors/contributorsbox.jsx'
 import PaymentsBox from './components/payments/paymentsbox.jsx'
+import AddProductForm from './components/addproductform.jsx'
 import Navbar from './components/navbar/navbar.jsx'
 import Register from './components/register.jsx'
 import PaymentForm from './components/paymentform.jsx'
@@ -56,7 +57,6 @@ export default class Cart extends Component {
       var re = new RegExp('user_name' + "=([^;]+)");
       var value = re.exec(document.cookie);
       return ((value != null) ? ("You are now signed in as " + unescape(value[1])).replace('+', ' ') : false)
-      
     }
 
     function loginCheck(cart) {
@@ -76,6 +76,7 @@ export default class Cart extends Component {
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} /> 
             <PaymentsBox payments={cart.state.data.cart.payments} />
             <PaymentForm cart_id={cart.state.data.cart.id} min_pay={cart.state.data.custom_minimum_payment} />
+            <AddProductForm cart_id={cart.state.data.cart.id} />
           </div>
         </div>
       ) 
