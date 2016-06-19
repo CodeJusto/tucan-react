@@ -5,6 +5,8 @@ import ContributorsBox from './components/contributors/contributorsbox.jsx'
 import PaymentsBox from './components/payments/paymentsbox.jsx'
 import Navbar from './components/navbar/navbar.jsx'
 import Register from './components/register.jsx'
+import PaymentForm from './components/paymentform.jsx'
+
 import $, { ajax } from 'jquery';
 
 // (function(b,c){var $=b.jQuery||b.Cowboy||(b.Cowboy={}),a;$.throttle=a=function(e,f,j,i){var h,d=0;if(typeof f!=="boolean"){i=j;j=f;f=c}function g(){var o=this,m=+new Date()-d,n=arguments;function l(){d=+new Date();j.apply(o,n)}function k(){h=c}if(i&&!h){l()}h&&clearTimeout(h);if(i===c&&m>e){l()}else{if(f!==true){h=setTimeout(i?k:l,i===c?e-m:e)}}}if($.guid){g.guid=j.guid=j.guid||$.guid++}return g};$.debounce=function(d,e,f){return f===c?a(d,e,false):a(d,f,e!==false)}})({jQuery: $});
@@ -59,7 +61,6 @@ export default class Cart extends Component {
 
     function loginCheck(cart) {
       if (cookie()) {
-        debugger
       return (
         <div className="Page">
           <div className="navbar">
@@ -74,6 +75,7 @@ export default class Cart extends Component {
               progress={cart.state.data.cart.progress} />
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} /> 
             <PaymentsBox payments={cart.state.data.cart.payments} />
+            <PaymentForm cart_id={cart.state.data.cart.id} min_pay={cart.state.data.custom_minimum_payment} />
           </div>
         </div>
       ) 
