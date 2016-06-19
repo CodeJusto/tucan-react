@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $, { ajax } from 'jquery';
 
 export default class ProgressBox extends Component {
   render() {
