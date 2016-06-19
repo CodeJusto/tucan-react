@@ -5,7 +5,6 @@ var PaymentForm = React.createClass({
 
   getInitialState: function() {
     return {
-      cartId: this.props.cart_id,
       stripeLoading: false,
       stripeLoadingError: false,
       submitDisabled: false,
@@ -47,7 +46,7 @@ var PaymentForm = React.createClass({
         $.ajax({
           type: 'POST',
           url: 'http://localhost:4000/api/charges',
-          data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.state.cart_id, user_id: parseFloat(this.props.user_id) }
+          data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.props.cart_id, user_id: this.props.user_id }
         });
       }
     });
