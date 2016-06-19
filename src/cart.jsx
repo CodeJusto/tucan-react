@@ -33,6 +33,7 @@ export default class Cart extends Component {
 
   componentDidMount() {
     this.loadCartFromServer() 
+    this.loadUserInfo()
      setInterval(() => this.pageDeterminator(), this.props.interval);
     // $(window).on('resize', () => console.log('Raw resize'))
     // $(window).on('resize', $.debounce(100, () => console.log('Debounced resize')))
