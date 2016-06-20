@@ -9,7 +9,7 @@ export default class Product extends React.Component {
         <div id={this.props.key}>
           <h2><a href={this.props.product.url}>{this.props.product.display_name}</a></h2>
           <img src={this.props.product.image} />
-          <p>Price: {numeral(this.props.product.price).divide(10).format('$0,0[.]00')}</p>
+          <p>Price: {numeral(this.props.product.price).divide(100).format('$0,0[.]00')}</p>
           <p>Quantity: {this.props.product.quantity}</p>
 
         </div>
