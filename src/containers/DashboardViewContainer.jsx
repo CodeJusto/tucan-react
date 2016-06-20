@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import Cart from '../components/cart/cart.jsx';
+
+import Dashboard from '../components/dashboard/dashboard.jsx';
 
 
 var DashboardViewContainer = React.createClass({
   render: function() {
     return (
-      <h1>This is your dashboard</h1>
-    );
+      <Dashboard url='http://localhost:4000/api/carts/' interval={5000} />
+    )
   }
 });
 
