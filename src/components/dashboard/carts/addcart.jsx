@@ -57,8 +57,9 @@ var AddCartForm = React.createClass({
     $.ajax({
           type: 'POST',
           dataType: 'json',
-          url: 'http://localhost:4000/api/carts/',
-          data: { 
+          url: 'http://localhost:4000/api/carts',
+          data: JSON.stringify({ 
+                  id: this.props.user_id,
                   name: this.state.name, 
                   expiry: this.state.expiry, 
                   street_address: this.state.street_address, 
@@ -67,8 +68,10 @@ var AddCartForm = React.createClass({
                   country: this.state.country,  
                   province: this.state.province,
                   zip_code: this.state.zip_code
-                }
+                }),
+          contentType: "application/json"
     });
+    // Add some code that will reset the values of the form
   },
 
   render() {

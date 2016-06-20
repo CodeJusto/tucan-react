@@ -9,7 +9,7 @@ export default class Cartbox extends Component {
       <div>
       <h3>This is the cart box</h3>
       <Cartlist user_carts={this.props.carts} />
-      <AddCart />
+      <AddCart user_id={this.props.user_id} />
       </div>
     )
   }

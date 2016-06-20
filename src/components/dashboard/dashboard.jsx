@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Cartbox from './carts/cartbox.jsx'
 import $, { ajax } from 'jquery';
+import { Link } from 'react-router'
 
 
 export default class Dashboard extends Component {
-
   componentDidMount() {
     this.loadCartsFromServer()
     setInterval(() => this.loadCartsFromServer(), this.props.interval);
   }
 
   loadCartsFromServer() {
+      console.log(this.props)
     ajax({
-      url: this.props.url,
+      url: (this.props.url + "?user_id=" + this.props.user_id),
       dataType: 'json',
       cache: false,
       success: data => {
@@ -33,8 +34,9 @@ export default class Dashboard extends Component {
     return (
       <div>
         <h1>Dashboard</h1>
+        <Link to="/">Return Home</Link>
         <Cartbox 
-          carts={this.state.data}
+          carts={this.state.data} user_id={this.props.user_id}
         />
       </div>
     )

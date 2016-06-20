@@ -20,6 +20,7 @@ export default class Cart extends Component {
   }
 
   loadCartFromServer() {
+    console.log("cart")
     ajax({
       url: this.props.url,
       dataType: 'json',
