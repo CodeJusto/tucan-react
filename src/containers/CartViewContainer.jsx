@@ -19,7 +19,7 @@ var CartViewContainer = React.createClass({
         ) 
       } else {
         return (
-          <Register />
+          <h2>hey</h2>
         )
       }
     } 
