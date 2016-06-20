@@ -54,12 +54,6 @@ $(document).ready(function(){
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
 
-  // $(".cart-card").hover(function(){
-  //   $(this).toggleClass("z-depth-1");
-  // }, function(){
-  //   $(this).toggleClass("z-depth-1");
-  // });
-
 
   setTimeout(function(){ Materialize.showStaggeredList('.cart-list'); }, 500);
 });

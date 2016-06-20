@@ -248,12 +248,18 @@ section#hero {
 }
 
 .cart-list {
+  margin: 2rem 0;
+
   li {
     opacity: 0;
   }
 
   li>a {
     color: $text-dark;
+  }
+
+  li:last-child>.cart-card {
+    margin-bottom: 0;
   }
 
   .cart-card {

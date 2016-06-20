@@ -18,7 +18,7 @@ export default class Dashboard extends Component {
       cache: false,
       success: data => {
         this.setState({data: data});
-        console.log(data);
+        // console.log(data);
       },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });
@@ -40,7 +40,9 @@ export default class Dashboard extends Component {
 
         <div className="container">
           <Cartbox carts={this.state.data} />
-        </div>   
+        </div> 
+
+        <a href="#" className="btn-floating btn-large waves-effect waves-light pink modal-trigger" id="new-cart-btn"><i className="material-icons">add</i></a>  
       </div>   
     )
   }

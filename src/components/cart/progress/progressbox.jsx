@@ -1,3 +1,5 @@
+// this file is no longer needed, delete after
+
 import React, { Component } from 'react';
 import $, { ajax } from 'jquery';
 
