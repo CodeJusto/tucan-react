@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
+import Register from '../components/register.jsx'
 
 
 var HomeViewContainer = React.createClass({
   render: function() {
     return (
-      <h1>Welcome Home</h1>
+      <div>
+      <h1>Toucan</h1>
+      <h2>Split the cost of items online</h2>
+      <Register />
+      </div>
     );
   }
 });
