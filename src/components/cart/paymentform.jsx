@@ -64,16 +64,60 @@ var PaymentForm = React.createClass({
     }
     else {
       return (
-        <form onSubmit={this.handleSubmit} >
-        <h2>Make a payment</h2>
-          <span>{ this.state.paymentError }</span><br />
-          <input type='number' step="any" placeholder='amount' value={this.state.amount} onChange={this.handleAmountChange} /><br />
-          <input type='text' data-stripe='number' placeholder='credit card number' /><br />
-          <input type='text' data-stripe='exp-month' placeholder='expiration month' /><br />
-          <input type='text' data-stripe='exp-year' placeholder='expiration year' /><br />
-          <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
-          <input disabled={this.state.submitDisabled} type='submit' value='Purchase' />
-        </form>
+        <div id="notification-modal" className="modal">
+          <div className="modal-header center-align">
+            <h4>Make a payment</h4>
+            <span>{ this.state.paymentError }</span><br />
+            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat"><i className="material-icons">clear</i></a>
+          </div>
+          <div className="modal-content">
+            <div className="row">
+              <form onSubmit={this.handleSubmit} className="col s12" id="addCart" onSubmit={this.handleSubmit}>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input type='number' step="any" placeholder='amount' value={this.state.amount} onChange={this.handleAmountChange} /><br />
+                    <label htmlFor="email">Payment amount</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input type='text' data-stripe='number' placeholder='credit card number' /><br />
+                    <label htmlFor="email">Credit card number</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input type='text' data-stripe='exp-month' placeholder='expiration month' /><br />
+                    <label htmlFor="email">MM</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input type='text' data-stripe='exp-year' placeholder='expiration year' /><br />
+                    <label htmlFor="email">YY</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
+                    <label htmlFor="email">CVC</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
+                    <label htmlFor="email">CVC</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12">
+                    <input disabled={this.state.submitDisabled} type='submit' value='Complete payment' />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>  
       );
     }
   }

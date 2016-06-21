@@ -19,7 +19,7 @@ export default class ProgressBox extends Component {
 
         <div className="cart-submeta">
           <h4>{moment(this.props.expiry).endOf('minute').fromNow(true)}</h4>
-          <span>days to go</span>
+          <span>remaining</span>
         </div>
 
         <div className="cart-submeta">
