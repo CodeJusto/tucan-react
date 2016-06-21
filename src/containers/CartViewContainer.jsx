@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Layout from './Layout.jsx'
 import Cart from '../components/cart/cart.jsx';
 
 
 var CartViewContainer = React.createClass({
-
+  getDefaultProps() {
+    return {
+      title: 'Cart'
+    };
+  },
   render() {
     const cart = this
     const url = "http://localhost:4000/api/carts/" + this.props.params.id
@@ -19,7 +24,9 @@ var CartViewContainer = React.createClass({
     function loginCheck(cart) {
       if (true) {
         return (
-          <Cart url={url} interval={5000} />  
+          <Layout>
+            <Cart url={url} interval={5000} />
+          </Layout>
         ) 
       } else {
         return (

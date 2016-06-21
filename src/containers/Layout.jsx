@@ -9,7 +9,7 @@ var Layout = React.createClass({
   render() {
     return (
       <div>
-        <div className="l-content">
+        <div className="">
           {this.props.children}
         </div>
         
