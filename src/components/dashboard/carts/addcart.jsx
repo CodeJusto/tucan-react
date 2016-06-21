@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import $, { ajax } from 'jquery';
+import Input from '../../input.jsx';
 
 var AddCartForm = React.createClass({
 
   getInitialState: function() {
     return {
-      name: '',
+      cart_name: '',
       expiry: '',
       street_address: '',
       street_address2: '',
@@ -16,40 +17,10 @@ var AddCartForm = React.createClass({
     };
   },
 
-  handleNameChange: function(e) {
-    this.setState({name: e.target.value})
-  },
-
-  handleExpiryChange: function(e) {
-    this.setState({expiry: e.target.value})
-  },
-  
-  handleStreetAddressChange: function(e) {
-    this.setState({street_address: e.target.value})
-  },
-
-  handleStreetAddress2Change: function(e) {
-    this.setState({street_address2: e.target.value})
-  },
-
-  handleCountryChange: function(e) {
-    this.setState({country: e.target.value})
-  },
-
-  handleCityChange: function(e) {
-    this.setState({city: e.target.value})
-  },
-
-  handleCountryChange: function(e) {
-    this.setState({country: e.target.value})
-  },
-
-  handleProvinceChange: function(e) {
-    this.setState({province: e.target.value})
-  },
-  
-  handleZipChange: function(e) {
-    this.setState({zip_code: e.target.value})
+  handleChange: function(e) {
+    let state = {};
+    state[e.target.name] = e.target.value;
+    this.setState(state)
   },
 
   handleSubmit: function(e) {
@@ -80,14 +51,14 @@ var AddCartForm = React.createClass({
       <div className="addCart">
       <h2>Add a cart</h2>
         <form id="addCart" onSubmit={this.handleSubmit}>
-          <input type="text" name="name" placeholder="Display name" onChange={this.handleNameChange} />
-          <input type="date" name="expiry" placeholder="Expiry date" onChange={this.handleExpiryChange} />
-          <input type="text" name="street_address" placeholder="Street address" onChange={this.handleStreetAddressChange} />
-          <input type="text" name="street_address2" placeholder="Street address 2" onChange={this.handleStreetAddress2Change} />
-          <input type="text" name="city" placeholder="City" onChange={this.handleCityChange} />
-          <input type="text" name="country" placeholder="Country" onChange={this.handleCountryChange} />
-          <input type="text" name="province" placeholder="Province" onChange={this.handleProvinceChange} />
-          <input type="text" name="zip_code" placeholder="Zip code" onChange={this.handleZipChange} />
+          <input type="text" name="cart_name" placeholder="Cart name" onChange={this.handleChange}/>
+          <input type="date" name="expiry" placeholder="Expiry date" onChange={this.handleChange} />
+          <input type="text" name="street_address" placeholder="Street address" onChange={this.handleChange} />
+          <input type="text" name="street_address2" placeholder="Street address 2" onChange={this.handleChange} />
+          <input type="text" name="city" placeholder="City" onChange={this.handleChange} />
+          <input type="text" name="country" placeholder="Country" onChange={this.handleChange} />
+          <input type="text" name="province" placeholder="Province" onChange={this.handleChange} />
+          <input type="text" name="zip_code" placeholder="Zip code" onChange={this.handleChange} />
           <input type="submit" value="Add cart" />
         </form>
       </div>

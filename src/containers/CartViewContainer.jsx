@@ -27,6 +27,7 @@ var CartViewContainer = React.createClass({
           <Layout>
             <Cart url={url} interval={5000} />
           </Layout>
+
         ) 
       } else {
         return (
