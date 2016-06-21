@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from '../components/navbar/navbar.jsx'
 import Footer from '../components/footer.jsx'
 var ExecutionEnvironment = require('exenv');
 
@@ -10,7 +11,8 @@ var Layout = React.createClass({
     return (
       <div>
         <div className="">
-        <a href="http://localhost:4000/auth/facebook">Log in through Facebook</a>
+          <a href="http://localhost:4000/auth/facebook">Log in through Facebook</a>
+          <Navbar />
           {this.props.children}
         </div>
         <Footer />

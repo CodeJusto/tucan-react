@@ -7,6 +7,7 @@ import { Link } from 'react-router'
 
 require('expose?$!expose?jQuery!jquery'); //Required by Materialize
 require("../../lib/materialize.min.js");
+require('../../lib/js-cookie.js');
 
 
 export default class Dashboard extends Component {
@@ -32,6 +33,7 @@ export default class Dashboard extends Component {
 
   loadCartsFromServer() {
       // console.log(this.props)
+
     ajax({
       url: (this.props.url),
       dataType: 'json',

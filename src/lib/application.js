@@ -22,6 +22,7 @@ $(function(){
   // $('.modal-trigger').leanModal();
   $('.modal-btn').click(function(e){
     e.preventDefault();
+    console.log('click');
     var id = "#" + $(this).data('modal');
     $(id).addClass('open').fadeIn();
     $('#materialize-lean-overlay').addClass('open').fadeIn();
