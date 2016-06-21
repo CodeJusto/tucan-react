@@ -9,6 +9,7 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import InvitationsBox from './invitations/invitationsbox.jsx'
+import NotificationModal from './modals/notificationmodal.jsx'
 // import Navbar from '../navbar/navbar.jsx'
 // import Register from '../register.jsx'
 
@@ -26,7 +27,6 @@ export default class Cart extends Component {
   }
 
   loadCartFromServer() {
-    console.log("cart")
     ajax({
       url: this.props.url,
       dataType: 'json',
@@ -85,13 +85,13 @@ export default class Cart extends Component {
 
             <ul id="cart-options">
               <li>
-                <a href="#invite-modal" className=" modal-trigger">
+                <a href="#invite-modal" className="modal-trigger">
                   <i className="material-icons">group_add</i>
                   Share
                 </a>
               </li>
               <li>
-                <a href="#notification-modal" className=" modal-trigger">
+                <a href="#notification-modal" className="modal-trigger" data-modal="notification-modal">
                   <i className="material-icons">notifications</i>
                   Notifications
                 </a>
@@ -132,13 +132,10 @@ export default class Cart extends Component {
             <a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
           </div>
         </div>
-
         <div>
         <InvitationsBox cart_id={this.props.cart_id} user_id={this.state.data.current_user.id} />
         </div>
-
-
-
+        <NotificationModal />
       </div>
     ) 
   }

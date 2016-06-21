@@ -1,20 +1,5 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
-//= require materialize-sprockets
-// import $ from 'jquery';
+// var $ = window.jQuery = require('jquery');
+// require('./materialize.min.js');
 
 window.fbAsyncInit = function() {
   FB.init({
@@ -33,7 +18,28 @@ window.fbAsyncInit = function() {
  }(document, 'script', 'facebook-jssdk'));
 
 $(function(){
-  $('.modal-trigger').leanModal();
+
+  // $('.modal-trigger').leanModal();
+  $('.modal-trigger').click(function(e){
+    e.preventDefault();
+    var id = "#" + $(this).data('modal');
+    $(id).addClass('open').fadeIn();
+    $('#materialize-lean-overlay').addClass('open').fadeIn();
+  });
+
+  $('.modal-close').click(function(e){
+    e.preventDefault();
+    $(this).parents('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+    $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+  });
+
+  $(document).on('keyup', function(e) {
+    if (e.keyCode === 27) {   // ESC key
+      $('.modal.open').fadeOut(600, function(){$(this).removeClass('open')});
+      $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+    }
+  });
+
 
   $(".button-collapse").sideNav({
       menuWidth: 300, // Default is 240
@@ -53,3 +59,4 @@ $(function(){
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
 });
+

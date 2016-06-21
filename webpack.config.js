@@ -24,6 +24,8 @@ module.exports = {
         loaders: ['react-hot', 'babel'],
         include: path.join(__dirname, 'src')
       },
+
+      { test: require.resolve("jquery"), loader: "expose?$!expose?jQuery" },
       // tell webpack to use the style-loader, css-loader, postcss-loader and less-loader
       // in that order, to process less files
       {
