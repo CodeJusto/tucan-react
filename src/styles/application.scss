@@ -382,6 +382,8 @@ section#hero {
   padding: 40px;
   background-color: #fafafa;
 
+
+
   .btn-rect {
     width: 100%;
   }
@@ -393,7 +395,8 @@ section#hero {
   text-align: center;
 
   li {
-    margin-bottom: 1rem;
+    margin: 0 0.2rem 1rem;
+
     display: inline-block;
 
     a {
@@ -457,7 +460,8 @@ section#hero {
 
 #payments {
   margin: 0;
-  padding: 0;
+  margin-top: 1.78rem;
+  // padding: 0;
 
   .payment-entry {
     padding: 1rem;
