@@ -10,6 +10,7 @@ ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={HomeViewContainer} />
     <Route path="/cart" component={CartViewContainer} />
+    <Route path="/cart/1" component={CartViewContainer} />
     <Route path="/dashboard" component={DashboardViewContainer} />
   </Router>
 ), document.getElementById('root'))
