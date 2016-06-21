@@ -14,7 +14,7 @@ var Layout = React.createClass({
           {this.props.children}
         </div>
         <Footer />
-        <div className="lean-overlay" id="materialize-lean-overlay-2"></div>
+        <div className="lean-overlay" id="materialize-lean-overlay"></div>
       </div>
     );
   },

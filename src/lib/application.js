@@ -22,16 +22,22 @@ $(function(){
   // $('.modal-trigger').leanModal();
   $('.modal-trigger').click(function(e){
     e.preventDefault();
-    console.log('click');
     var id = "#" + $(this).data('modal');
     $(id).addClass('open').fadeIn();
-    $('#materialize-lean-overlay-2').addClass('open').fadeIn();
+    $('#materialize-lean-overlay').addClass('open').fadeIn();
   });
 
   $('.modal-close').click(function(e){
     e.preventDefault();
     $(this).parents('.modal').fadeOut(600, function(){$(this).removeClass('open')});
-    $('#materialize-lean-overlay-2').fadeOut(800, function(){$(this).removeClass('open')});
+    $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+  });
+
+  $(document).on('keyup', function(e) {
+    if (e.keyCode === 27) {   // ESC key
+      $('.modal.open').fadeOut(600, function(){$(this).removeClass('open')});
+      $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+    }
   });
 
 
