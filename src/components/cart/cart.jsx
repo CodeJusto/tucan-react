@@ -20,10 +20,15 @@ export default class Cart extends Component {
   componentDidMount() {
     this.loadCartFromServer()
     this._timer = setInterval(() => this.loadCartFromServer(), this.props.interval);
+
   }
 
   componentWillUnmount() {
     clearInterval(this._timer);
+  }
+
+  componentDidUpdate() {
+    $('ul.tabs').tabs();
   }
 
   loadCartFromServer() {
@@ -79,14 +84,12 @@ export default class Cart extends Component {
             <ul id="cart-options">
               <li>
                 <a href="#invite-modal" className="modal-trigger">
-                  <i className="material-icons">group_add</i>
-                  Share
+                  <i className="material-icons">group_add</i> Share
                 </a>
               </li>
               <li>
                 <a href="#notification-modal" className="modal-trigger" data-modal="notification-modal">
-                  <i className="material-icons">notifications</i>
-                  Notifications
+                  <i className="material-icons">notifications</i> Notifications
                 </a>
               </li>
             </ul>
