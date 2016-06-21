@@ -8,8 +8,10 @@ import ContributorsBox from './contributors/contributorsbox.jsx'
 import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
-import InvitationsBox from './invitations/invitationsbox.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
+import FacebookModal from './modals/facebookModal.jsx'
+import InvitationModal from './modals/invitationModal.jsx'
+// import InvitationModal from './modals/invitationModal.jsx'
 // import Navbar from '../navbar/navbar.jsx'
 // import Register from '../register.jsx'
 
@@ -45,12 +47,6 @@ export default class Cart extends Component {
     const moment = require('moment');
     const numeral = require('numeral');
 
-  $(document).ready(function(){
-  //   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    $('.modal-trigger').leanModal();
-  });
-
-
     if(!this.state) {
       return <div><h1>Loading....</h1></div>
     }
@@ -85,13 +81,13 @@ export default class Cart extends Component {
 
             <ul id="cart-options">
               <li>
-                <a href="#invite-modal" className="modal-trigger">
+                <a href="#" className="modal-btn" data-modal="facebook-modal">
                   <i className="material-icons">group_add</i>
                   Share
                 </a>
               </li>
               <li>
-                <a href="#notification-modal" className="modal-trigger" data-modal="notification-modal">
+                <a href="#notification-modal" className="modal-btn" data-modal="notification-modal">
                   <i className="material-icons">notifications</i>
                   Notifications
                 </a>
@@ -115,27 +111,15 @@ export default class Cart extends Component {
             <div><span className="tab-label">Contributors</span></div>
             
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
-
-          </div>
-          <div>
-          <a data-target="facebook-modal" className="waves-effect waves-light btn modal-trigger"  >Share this on Facebook</a>
-          </div>
-
-        </div>
-
-        <div id="facebook-modal" className="modal">
-          <div className="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-          </div>
-          <div className="modal-footer">
-            <a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
           </div>
         </div>
-        <div>
-        <InvitationsBox cart_id={this.props.cart_id} user_id={this.state.data.current_user.id} />
-        </div>
+        <FacebookModal user_id={this.state.data.current_user.id}/>
         <NotificationModal />
+        <InvitationModal cart_id={this.state.data.cart.id} user_id={this.state.data.current_user.id} />
+        <div>
+                <a target="_window" href="http://www.facebook.com/dialog/send?app_id=603654559803426&amp;link=http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html
+  &amp;redirect_uri=https://www.domain.com/">Share on Facebook</a>
+        </div>
       </div>
     ) 
   }
