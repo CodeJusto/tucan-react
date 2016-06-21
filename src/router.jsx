@@ -7,12 +7,10 @@ import DashboardViewContainer from './containers/DashboardViewContainer.jsx'
 import Layout from './containers/Layout.jsx'
 
 ReactDOM.render((
-  <Layout>
   <Router history={browserHistory}>
-    <Route path="/" >
+    <Route path="/" component={Layout}>
       <Route path="cart/:id" component={CartViewContainer} />
       <Route path="/dashboard" component={DashboardViewContainer} />
     </Route>
   </Router>
-  </Layout>
 ), document.getElementById('root'))

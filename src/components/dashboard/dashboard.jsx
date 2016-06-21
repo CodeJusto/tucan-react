@@ -14,11 +14,10 @@ export default class Dashboard extends Component {
   componentDidMount() {
     this.initialLoad = true;
     this.loadCartsFromServer();
-    // this._timer = setInterval(() => this.loadCartsFromServer(), this.props.interval);
+    this._timer = setInterval(() => this.loadCartsFromServer(), this.props.interval);
   }
 
   componentWillUnmount() {
-    console.log('Oh noes, i\'m killed', this._timer)
     clearInterval(this._timer);
   }
 
@@ -40,7 +39,6 @@ export default class Dashboard extends Component {
       success: data => {
         // console.log('Success', this.initialLoad);
         this.setState({data: data});
-        // console.log('Received data: ', data);
       },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });

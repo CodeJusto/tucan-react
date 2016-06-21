@@ -24,10 +24,7 @@ var CartViewContainer = React.createClass({
     function loginCheck(cart) {
       if (true) {
         return (
-          <Layout>
             <Cart url={url} interval={5000} />
-          </Layout>
-
         ) 
       } else {
         return (
