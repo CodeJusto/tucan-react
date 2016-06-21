@@ -60,7 +60,7 @@ export default class Cart extends Component {
                 totalPayment={cart.state.data.cart.total_payment}
                 progress={cart.state.data.cart.progress} />
           </div>
-          
+
           <div className="col s12 m4">
             <div className="cart-options">
               <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-trigger">Contribute Now</a>
@@ -84,6 +84,24 @@ export default class Cart extends Component {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+
+        <div className="row"  id="cart-bottom">
+          <div className="col s12 m8">
+            <ul className="tabs">
+              <li className="tab col s3"><a className="active" href="#products">Products</a></li>
+              <li className="tab col s3"><a href="#payments">Payments</a></li>
+            </ul>
+
+            <ProductBox products={cart.state.data.cart.products} />
+            <PaymentsBox payments={cart.state.data.cart.payments} />
+          </div>
+
+          <div className="col s12 m4 center-align" id="contribution">
+            <div><span className="tab-label">Contributors</span></div>
+            
+            <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
           </div>
         </div>
       </div>

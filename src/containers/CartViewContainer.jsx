@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Layout from './Layout.jsx'
 import Cart from '../components/cart/cart.jsx';
 
 
 var CartViewContainer = React.createClass({
-
+  getDefaultProps() {
+    return {
+      title: 'Cart'
+    };
+  },
   render() {
     const cart = this
     var cookie = function getCookie() {
@@ -15,7 +20,9 @@ var CartViewContainer = React.createClass({
     function loginCheck(cart) {
       if (cookie()) {
         return (
-          <Cart url="http://localhost:4000/api/carts/1" interval={5000} />  
+          <Layout>
+            <Cart url="http://localhost:4000/api/carts/1" interval={5000} />  
+          </Layout>
         ) 
       } else {
         return (
