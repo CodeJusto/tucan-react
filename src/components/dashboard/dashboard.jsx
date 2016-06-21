@@ -12,14 +12,14 @@ export default class Dashboard extends Component {
   }
 
   loadCartsFromServer() {
-      console.log(this.props)
+      // console.log(this.props)
     ajax({
       url: (this.props.url + "?user_id=" + this.props.user_id),
       dataType: 'json',
       cache: false,
       success: data => {
         this.setState({data: data});
-        console.log(data);
+        // console.log(data);
       },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });
@@ -33,12 +33,18 @@ export default class Dashboard extends Component {
 
     return (
       <div>
-        <h1>Dashboard</h1>
-        <Link to="/">Return Home</Link>
-        <Cartbox 
-          carts={this.state.data} user_id={this.props.user_id}
-        />
-      </div>
+        <div className="row user-greeting">
+          <div className="col s12 center-align toucan-bg">
+            <h1>Ahoy, Username!</h1>
+          </div>
+        </div>
+
+        <div className="container">
+          <Cartbox carts={this.state.data} />
+        </div> 
+
+        <a href="#" className="btn-floating btn-large waves-effect waves-light pink modal-trigger" id="new-cart-btn"><i className="material-icons">add</i></a>  
+      </div>   
     )
   }
 }

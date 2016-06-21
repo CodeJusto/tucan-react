@@ -29,6 +29,27 @@ module.exports = {
       {
         test: /\.less$/,
         loader: 'style!css!postcss!less'
+      },
+
+      {
+        test: /\.scss$/,
+        // loaders: ["style", "css", "sass"]
+        loader: 'style!css!sass'
+      },
+
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+
+      {
+       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+       loader: "url-loader?limit=10000&minetype=application/font-woff"
+      },
+      {
+       test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+       loader: "file-loader"
+      },
+      {
+       test: /\.jpe?g$|\.gif$|\.png$|\.wav$|\.mp3$/,
+       loader: "file-loader"
       }
     ]
   }

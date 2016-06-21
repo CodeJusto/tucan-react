@@ -5,10 +5,9 @@ export default class Cartlist extends Component {
   render() {
     const myCarts = this.props.user_carts.carts.map(cart => <Cart cart={cart} />)
     return (
-      <div> 
-      <h4>This is the cart list</h4>
-      {myCarts}
-      </div>
+      <ul className="col s12 cart-list">
+        {myCarts}
+      </ul>
     )
   }
 }

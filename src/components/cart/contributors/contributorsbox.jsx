@@ -5,7 +5,7 @@ import $ from 'jquery';
 export default class ContributorsBox extends Component {
   render() {
     const contributorBundle = this.props.contributors.map(contributor => <Contributors key={contributor.id} username={contributor.name} />);
-    const organizer = this.props.organizer[0].name
+    const organizer = this.props.organizer.name
     return (
       <div>
       <h3>Contributors</h3>
