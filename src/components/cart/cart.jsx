@@ -8,6 +8,7 @@ import ContributorsBox from './contributors/contributorsbox.jsx'
 import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
+import InvitationsBox from './invitations/invitationsbox.jsx'
 // import Navbar from '../navbar/navbar.jsx'
 // import Register from '../register.jsx'
 
@@ -37,16 +38,24 @@ export default class Cart extends Component {
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });
   }
-  
+
+
   render() {
     const cart = this
     const moment = require('moment');
     const numeral = require('numeral');
 
+  $(document).ready(function(){
+  //   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+
 
     if(!this.state) {
       return <div><h1>Loading....</h1></div>
     }
+
+
     return (
       <div className="container">
         <div className="row" id="cart-top">
@@ -55,7 +64,6 @@ export default class Cart extends Component {
               <h2>{cart.state.data.cart.name}</h2>
               <div className="chip">status</div>
             </div>
-            
               <ProgressBox 
                 created_at={cart.state.data.cart.created_at}
                 expiry={cart.state.data.cart.expiry}
@@ -107,8 +115,30 @@ export default class Cart extends Component {
             <div><span className="tab-label">Contributors</span></div>
             
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
+
+          </div>
+          <div>
+          <a data-target="facebook-modal" className="waves-effect waves-light btn modal-trigger"  >Share this on Facebook</a>
+          </div>
+
+        </div>
+
+        <div id="facebook-modal" className="modal">
+          <div className="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+          </div>
+          <div className="modal-footer">
+            <a href="#!" className=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
           </div>
         </div>
+
+        <div>
+        <InvitationsBox cart_id={this.props.cart_id} user_id={this.state.data.current_user.id} />
+        </div>
+
+
+
       </div>
     ) 
   }

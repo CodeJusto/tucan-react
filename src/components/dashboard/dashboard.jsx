@@ -40,6 +40,7 @@ export default class Dashboard extends Component {
       success: data => {
         // console.log('Success', this.initialLoad);
         this.setState({data: data});
+        
       },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });

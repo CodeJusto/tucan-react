@@ -6,6 +6,7 @@ var Layout = React.createClass({
   propTypes: {
     title: React.PropTypes.string
   },
+  
   render() {
     return (
       <div>
