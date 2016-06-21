@@ -10,6 +10,7 @@ export default class Cart extends Component {
       <h5>{this.props.cart.name}</h5>
       <p>{numeral(this.props.cart.progress).divide(100).format('0%')}</p>
       <p>{moment(this.props.cart.expiry).endOf('minute').fromNow()}</p>
+      <button>View cart</button>
       </div>
     )
   }

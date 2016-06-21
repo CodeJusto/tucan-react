@@ -7,6 +7,7 @@ var CartViewContainer = React.createClass({
 
   render() {
     const cart = this
+    const url = "http://localhost:4000/api/carts/" + this.props.params.id
     var cookie = function getCookie() {
       var re = new RegExp('user_name' + "=([^;]+)");
       var value = re.exec(document.cookie);
@@ -15,7 +16,7 @@ var CartViewContainer = React.createClass({
     function loginCheck(cart) {
       if (cookie()) {
         return (
-          <Cart url="http://localhost:4000/api/carts/1" interval={5000} />  
+          <Cart url={url} interval={5000} />  
         ) 
       } else {
         return (
