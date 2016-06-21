@@ -8,6 +8,8 @@ import ContributorsBox from './contributors/contributorsbox.jsx'
 import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
+import NotificationModal from './modals/notificationmodal.jsx'
+
 // import Navbar from '../navbar/navbar.jsx'
 // import Register from '../register.jsx'
 
@@ -17,7 +19,11 @@ export default class Cart extends Component {
 
   componentDidMount() {
     this.loadCartFromServer()
-    setInterval(() => this.loadCartFromServer(), this.props.interval);
+    this._timer = setInterval(() => this.loadCartFromServer(), this.props.interval);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._timer);
   }
 
   loadCartFromServer() {
@@ -72,13 +78,13 @@ export default class Cart extends Component {
 
             <ul id="cart-options">
               <li>
-                <a href="#invite-modal" className=" modal-trigger">
+                <a href="#invite-modal" className="modal-trigger">
                   <i className="material-icons">group_add</i>
                   Share
                 </a>
               </li>
               <li>
-                <a href="#notification-modal" className=" modal-trigger">
+                <a href="#notification-modal" className="modal-trigger" data-modal="notification-modal">
                   <i className="material-icons">notifications</i>
                   Notifications
                 </a>
@@ -104,6 +110,8 @@ export default class Cart extends Component {
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
           </div>
         </div>
+
+        <NotificationModal />
       </div>
     ) 
   }

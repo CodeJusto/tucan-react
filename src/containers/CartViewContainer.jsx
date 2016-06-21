@@ -12,17 +12,19 @@ var CartViewContainer = React.createClass({
   },
   render() {
     const cart = this
+    const url = "http://localhost:4000/api/carts/" + this.props.params.id
     var cookie = function getCookie() {
       var re = new RegExp('user_name' + "=([^;]+)");
       var value = re.exec(document.cookie);
       return ((value != null) ? ("You are now signed in as " + unescape(value[1])).replace('+', ' ') : false)
     }
+    
+    const params = this.props;
+    console.log(this.props);
     function loginCheck(cart) {
-      if (cookie()) {
+      if (true) {
         return (
-          <Layout>
-            <Cart url="http://localhost:4000/api/carts/1" interval={5000} />  
-          </Layout>
+            <Cart url={url} interval={5000} />
         ) 
       } else {
         return (

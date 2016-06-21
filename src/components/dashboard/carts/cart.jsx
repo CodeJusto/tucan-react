@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
 import ProgressBar from '../../cart/progress/progress.jsx';
 import CartImage from './cartimage.jsx';
 
 export default class Cart extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props)
+    console.log("props")
+  }
   render() {
     const moment = require('moment');
     const now = moment().format("MMM Do, YYYY");
     const numeral = require('numeral');
+    const url = ("/cart/" + this.props.cart.id)
     return (
       <li className="col s12">
         <div className="cart-card row">
@@ -18,11 +25,12 @@ export default class Cart extends Component {
             <ProgressBar progress={this.props.cart.progress} />
             <div className="cart-due">{moment(this.props.cart.expiry).endOf('minute').fromNow(true)} to go</div>
             <div className="view-btn right">
-              <a href="#">View cart</a>
+              <Link to={url}>View cart</Link>
             </div>
           </div>
         </div>
       </li>
+
     )
   }
 }

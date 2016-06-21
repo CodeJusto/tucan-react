@@ -6,8 +6,7 @@ import HomeViewContainer from './containers/HomeViewContainer.jsx'
 import CartViewContainer from './containers/CartViewContainer.jsx'
 import DashboardViewContainer from './containers/DashboardViewContainer.jsx'
 
-
-ReactDOM.render(( 
+ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/root" component={Layout}>
       <Route path="/cart/:id" component={CartViewContainer} />

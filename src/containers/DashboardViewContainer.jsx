@@ -9,10 +9,9 @@ var DashboardViewContainer = React.createClass({
     };
   },
   render: function() {
+    console.log(this.props.location.query.token)
     return (
-      <Layout title={this.props.title}>
-        <Dashboard url='http://localhost:4000/api/carts/' interval={5000} />
-      </Layout>
+        <Dashboard url='http://localhost:4000/api/carts/' user_id={this.props.location.query.token} interval={5000} />
     )
   }
 });

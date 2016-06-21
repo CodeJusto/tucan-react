@@ -10,16 +10,17 @@ var Layout = React.createClass({
     return (
       <div>
         <div className="">
+        <a href="http://localhost:4000/auth/facebook">Log in through Facebook</a>
           {this.props.children}
         </div>
-        
         <Footer />
+        <div className="lean-overlay" id="materialize-lean-overlay-2"></div>
       </div>
     );
   },
   componentDidMount() {
     if (ExecutionEnvironment.canUseDOM) {
-      document.title = this.props.title;
+      document.title = "Tucan";
     }
   }
 });
