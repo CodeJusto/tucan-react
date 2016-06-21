@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import Cartbox from './carts/cartbox.jsx'
+import AddCart from './carts/addcart.jsx'
 import $, { ajax } from 'jquery';
 import { Link } from 'react-router'
-// import { showStaggeredList } from "materialize-css/js/transitions.js";
-
-require('expose?$!expose?jQuery!jquery'); //Required by Materialize
-require("../../lib/materialize.min.js");
-
 
 export default class Dashboard extends Component {
 
@@ -55,15 +51,23 @@ export default class Dashboard extends Component {
         <div className="row user-greeting">
           <div className="col s12 center-align toucan-bg">
             <h1>Ahoy, Username!</h1>
+
           </div>
         </div>
 
         <div className="container">
           <Cartbox carts={this.state.data} />
-        </div> 
 
-        <a href="#" className="btn-floating btn-large waves-effect waves-light pink modal-trigger" id="new-cart-btn"><i className="material-icons">add</i></a>  
-      </div>   
+        </div>
+        <div>
+        <a href="#add-cart-modal" className="btn-floating btn-large waves-effect waves-light pink modal-trigger" id="new-cart-btn"><i className="material-icons">add</i></a>  
+        <AddCart />
+        </div>
+            <div>
+      <AddCart />
+      </div> 
+      </div>  
+
     )
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Cartlist from './cartlist.jsx'
-import AddCart from './addcart.jsx'
 
 export default class Cartbox extends Component {
   render() {
