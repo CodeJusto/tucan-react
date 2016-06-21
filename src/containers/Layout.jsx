@@ -12,7 +12,6 @@ var Layout = React.createClass({
         <div className="">
           {this.props.children}
         </div>
-        
         <Footer />
       </div>
     );

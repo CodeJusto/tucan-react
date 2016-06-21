@@ -3,12 +3,32 @@ import ReactDOM from 'react-dom';
 import Cartbox from './carts/cartbox.jsx'
 import $, { ajax } from 'jquery';
 import { Link } from 'react-router'
+// import { showStaggeredList } from "materialize-css/js/transitions.js";
+
+require('expose?$!expose?jQuery!jquery'); //Required by Materialize
+require("../../lib/materialize.min.js");
 
 
 export default class Dashboard extends Component {
+
   componentDidMount() {
-    this.loadCartsFromServer()
-    setInterval(() => this.loadCartsFromServer(), this.props.interval);
+    this.initialLoad = true;
+    this.loadCartsFromServer();
+    // this._timer = setInterval(() => this.loadCartsFromServer(), this.props.interval);
+  }
+
+  componentWillUnmount() {
+    console.log('Oh noes, i\'m killed', this._timer)
+    clearInterval(this._timer);
+  }
+
+  componentDidUpdate()
+  {
+    if(this.initialLoad)
+    {
+      Materialize.showStaggeredList('.cart-list');
+      this.initialLoad = false;
+    }
   }
 
   loadCartsFromServer() {
@@ -18,8 +38,9 @@ export default class Dashboard extends Component {
       dataType: 'json',
       cache: false,
       success: data => {
+        // console.log('Success', this.initialLoad);
         this.setState({data: data});
-        // console.log(data);
+        // console.log('Received data: ', data);
       },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });

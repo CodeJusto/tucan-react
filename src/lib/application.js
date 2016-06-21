@@ -16,7 +16,6 @@
 //= require materialize-sprockets
 // import $ from 'jquery';
 
-
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '603654559803426',
@@ -33,7 +32,7 @@ window.fbAsyncInit = function() {
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));
 
-$(document).ready(function(){
+$(function(){
   $('.modal-trigger').leanModal();
 
   $(".button-collapse").sideNav({
@@ -53,7 +52,4 @@ $(document).ready(function(){
   $('.collapsible').collapsible({
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
-
-
-  setTimeout(function(){ Materialize.showStaggeredList('.cart-list'); }, 500);
 });

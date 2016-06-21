@@ -17,7 +17,11 @@ export default class Cart extends Component {
 
   componentDidMount() {
     this.loadCartFromServer()
-    setInterval(() => this.loadCartFromServer(), this.props.interval);
+    this._timer = setInterval(() => this.loadCartFromServer(), this.props.interval);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._timer);
   }
 
   loadCartFromServer() {
