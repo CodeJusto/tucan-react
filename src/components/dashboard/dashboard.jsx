@@ -33,8 +33,9 @@ export default class Dashboard extends Component {
   loadCartsFromServer() {
       // console.log(this.props)
     ajax({
-      url: (this.props.url + "?user_id=" + this.props.user_id),
+      url: (this.props.url),
       dataType: 'json',
+      data: {id: this.props.user_id},
       cache: false,
       success: data => {
         // console.log('Success', this.initialLoad);
