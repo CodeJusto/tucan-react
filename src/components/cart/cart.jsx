@@ -74,7 +74,7 @@ export default class Cart extends Component {
 
           <div className="col s12 m4">
             <div className="cart-options">
-              <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-trigger">Contribute Now</a>
+              <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-btn">Contribute Now</a>
               <a className="btn-rect btn-secondary" data-confirm="Are you sure?" data-title="WARNING!" rel="nofollow" data-method="delete" href="<%= cart_path(@cart) %>">
                 Cancel
               </a>
@@ -83,12 +83,12 @@ export default class Cart extends Component {
 
             <ul id="cart-options">
               <li>
-                <a href="#invite-modal" className="modal-trigger">
+                <a href="#invite-modal" className="modal-btn">
                   <i className="material-icons">group_add</i> Share
                 </a>
               </li>
               <li>
-                <a href="#notification-modal" className="modal-trigger" data-modal="notification-modal">
+                <a href="#notification-modal" className="modal-btn" data-modal="notification-modal">
                   <i className="material-icons">notifications</i> Notifications
                 </a>
               </li>

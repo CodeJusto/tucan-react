@@ -20,7 +20,7 @@ window.fbAsyncInit = function() {
 $(function(){
 
   // $('.modal-trigger').leanModal();
-  $('.modal-trigger').click(function(e){
+  $('.modal-btn').click(function(e){
     e.preventDefault();
     var id = "#" + $(this).data('modal');
     $(id).addClass('open').fadeIn();
