@@ -23,6 +23,7 @@ $(function(){
   // $('.modal-trigger').leanModal();
   $('.modal-btn').click(function(e){
     e.preventDefault();
+    console.log('click');
     var id = "#" + $(this).data('modal');
     $(id).addClass('open').fadeIn();
     $('#materialize-lean-overlay').addClass('open').fadeIn();
@@ -53,6 +54,7 @@ $(function(){
     selectYears: 5 // Creates a dropdown of 15 years to control year
   });
 
+<<<<<<< HEAD
   $('#contribution>ul.tabs').tabs();
 
   $('.collapsible').collapsible({
@@ -60,5 +62,7 @@ $(function(){
   });
 
     
+=======
+>>>>>>> 962d89b2e0f83f0c7351d610f0792992f53393ab
 });
 

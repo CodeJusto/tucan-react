@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
 import User from './user.jsx'
+import { Link } from 'react-router';
 import $ from 'jquery';
 
 export default class Navbar extends Component {
 
-  // Original JavaScript code by Chirp Internet: www.chirp.com.au
-  // Please acknowledge use of this code by including this header.
-
-  // var login() {
-  //   if (getCookie('username') == nil)
-  // }
+  componentDidMount() {
+    $(".button-collapse").sideNav({
+        menuWidth: 300, // Default is 240
+        edge: 'right', // Choose the horizontal origin
+        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+      }
+    );
+  }
   
   render() {
-
-      var cookie = function getCookie() {
-      var re = new RegExp('user_name' + "=([^;]+)");
-      var value = re.exec(document.cookie);
-      var reg = new RegExp('user_id=(\\d{1,})');
-      // var id = reg.exec(document.cookie)[1];
-      var id = document.cookie;
-      return ((value != null) ? ("You are now signed in as " + unescape(value[1])).replace('+', ' ') + ', id: ' + id : false)
-    }
    
     return (
-      <div className="navbar">
-       <User userCheck={cookie()}/>
-      </div>
-      )
+      <nav>
+        <div>
+          <a href="" className="logo">
+          </a>
+        </div>
+        <ul className="right hide-on-med-and-down">
+          <li><Link to="/dashboard">My Carts</Link></li>
+          <li><a href="#!">Settings</a></li>
+          <li><a href="#!">Sign out</a></li>
+        </ul>
+        <ul id="slide-out" className="side-nav">
+          <li><Link to="/dashboard">My Carts</Link></li>
+          <li><a href="#!">Settings</a></li>
+          <li><a href="#!">Sign out</a></li>
+        </ul>
+        <a href="#" data-activates="slide-out" id="nav-menu-btn" className="button-collapse right"><i className="material-icons">menu</i></a>
+      </nav>
+    )
   }
 }

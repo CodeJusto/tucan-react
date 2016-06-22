@@ -26,10 +26,15 @@ export default class Cart extends Component {
   componentDidMount() {
     this.loadCartFromServer()
     this._timer = setInterval(() => this.loadCartFromServer(), this.props.interval);
+
   }
 
   componentWillUnmount() {
     clearInterval(this._timer);
+  }
+
+  componentDidUpdate() {
+    $('ul.tabs').tabs();
   }
 
   loadCartFromServer() {
@@ -82,7 +87,7 @@ export default class Cart extends Component {
 
           <div className="col s12 m4">
             <div className="cart-options">
-              <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-trigger">Contribute Now</a>
+              <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-btn">Contribute Now</a>
               <a className="btn-rect btn-secondary" data-confirm="Are you sure?" data-title="WARNING!" rel="nofollow" data-method="delete" href="<%= cart_path(@cart) %>">
                 Cancel
               </a>
