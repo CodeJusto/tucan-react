@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Cartbox from './carts/cartbox.jsx'
 import AddCart from './carts/addcart.jsx'
 import $, { ajax } from 'jquery';
+import { Link } from 'react-router';
 
 // import { showStaggeredList } from "materialize-css/js/transitions.js";
 
@@ -11,7 +12,6 @@ require("../../lib/materialize.min.js");
 require('../../lib/js-cookie.js');
 
 
-import { Link } from 'react-router';
 
 export default class Dashboard extends Component {
 
