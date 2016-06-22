@@ -14,17 +14,14 @@ var Layout = React.createClass({
     return (
       <div>
         <div className="">
-<<<<<<< HEAD
           <a href="http://localhost:4000/auth/facebook">Log in through Facebook</a>
           <Navbar />
-=======
                  <FacebookLogin
             appId="587441061429202"
             autoLoad={true}
             fields="name,email,picture"
             callback={responseFacebook} />
         <a href="http://localhost:4000/auth/facebook">Log in through Facebook</a>
->>>>>>> feature/facebook-login
           {this.props.children}
         </div>
         <Footer />

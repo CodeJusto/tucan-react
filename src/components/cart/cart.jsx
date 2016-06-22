@@ -132,7 +132,8 @@ export default class Cart extends Component {
           </div>
         </div>
         <NotificationModal />
-        <Paymentmodal />
+        <PaymentForm />
+        <AddProductForm cart_id={this.props.cart_id} />
 
       </div>
     ) 

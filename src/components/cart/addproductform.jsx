@@ -30,20 +30,47 @@ var AddProductForm = React.createClass({
           dataType: 'json',
           url: 'http://localhost:4000/api/carts/' + this.props.cart_id + '/products',
           data: { display_name: this.state.display_name, url: this.state.url, cart_id: this.props.cart_id, quantity: this.state.quantity }
-    });
+    }).done((){
+      
+    })
   },
 
   render() {
     return (
-      <div className="addProduct">
-      <h2>Add a product</h2>
-        <form id="addProduct" onSubmit={this.handleSubmit}>
-          <input type="text" name="display_name" placeholder="Display name" onChange={this.handleNameChange} />
-          <input type="text" name="url" placeholder="Product URL" onChange={this.handleUrlChange} />
-          <input type="number" name="quantity" placeholder="Quantity" onChange={this.handleQuantityChange} />
-          <input type="submit" value="Add product" />
-
-          </form>
+     <div id="add-product-modal" className="modal">
+          <div className="modal-header center-align">
+            <h4>Add a product</h4>
+            <a href="#" className="modal-action modal-close waves-effect waves-green btn-flat"><i className="material-icons">clear</i></a>
+          </div>
+          <div className="modal-content">
+            <div className="row">
+              <form className="col s12" id="addProduct" onSubmit={this.handleSubmit}>
+                <div className="row">
+                  <div className="input-field col s12"> 
+                    <input type="text" name="display_name" placeholder="Display name" onChange={this.handleNameChange} />
+                    <label htmlFor="display_name">Product name</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12"> 
+                    <input type="text" name="url" placeholder="Product URL" onChange={this.handleUrlChange} />
+                    <label htmlFor="url">URL</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12"> 
+                    <input type="number" min="1" name="quantity" placeholder="Quantity" onChange={this.handleQuantityChange} />
+                    <label htmlFor="quantity">Quantity</label>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="input-field col s12"> 
+                    <input type="submit" value="Add product" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
       </div>
       )
   }

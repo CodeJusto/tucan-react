@@ -17,8 +17,8 @@ export default class ProductBox extends Component {
     } else {
       return (
         <div className="cart-options">
-          <p>This cart doesn't have a product yet.</p>
-          <a href="#" className="btn-rect btn-primary waves-effect waves-light  modal-trigger">Add Product</a>
+          <p>You haven't added any products yet.</p>
+          <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="add-product-modal">Add product</a>
         </div>
       )
     }
