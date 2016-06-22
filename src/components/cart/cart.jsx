@@ -9,7 +9,7 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
-import SocialBar from './social/socialbar.jsx';
+// import SocialBar from './social/
 import {
   ShareButtons,
   ShareCounts,
@@ -129,7 +129,7 @@ export default class Cart extends Component {
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
           </div>
         </div>
-        <NotificationModal />
+        <NotificationModal cart_id={cart.state.data.cart.id} user_id={cart.state.data.current_user.id} />
         
 
       </div>

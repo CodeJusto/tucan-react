@@ -54,15 +54,12 @@ $(function(){
     selectYears: 5 // Creates a dropdown of 15 years to control year
   });
 
-<<<<<<< HEAD
   $('#contribution>ul.tabs').tabs();
 
   $('.collapsible').collapsible({
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
 
-    
-=======
->>>>>>> 962d89b2e0f83f0c7351d610f0792992f53393ab
+
 });
 
