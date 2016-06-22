@@ -24,7 +24,7 @@ var Layout = React.createClass({
   },
   componentDidMount() {
     if (ExecutionEnvironment.canUseDOM) {
-      document.title = this.props.title;
+      document.title = this.props.children.props.title;
     }
   }
 });

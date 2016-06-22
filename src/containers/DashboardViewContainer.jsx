@@ -10,7 +10,7 @@ var DashboardViewContainer = React.createClass({
 
   getDefaultProps() {
     return {
-      title: 'Dashboard',
+      title: 'Dashboard - Tucan',
       page: 'dashboard'
     };
   },
