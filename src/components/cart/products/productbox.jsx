@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 export default class ProductBox extends Component {
   render() {
-    const productBundle = this.props.products.map(product => <Product key={product.id} product={product} />);
+    const productBundle = this.props.products.map(product => <Product key={product.id} product={product} user_id={this.props.user_id} organizer_id={this.props.organizer_id} />);
     if (this.props.products.length > 0) {
       return (
         <div id="products">

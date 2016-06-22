@@ -127,7 +127,7 @@ export default class Cart extends Component {
               <li className="tab col s3"><a href="#payments">Payments</a></li>
             </ul>
 
-            <ProductBox products={cart.state.data.cart.products} />
+            <ProductBox products={cart.state.data.cart.products} user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} />
             <PaymentsBox payments={cart.state.data.cart.payments} />
           </div>
 
