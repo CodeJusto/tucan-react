@@ -8,7 +8,9 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
-// import SocialBar from './social/
+import SocialBar from './social/socialbar.jsx';
+import CancelButton from './ops/cancelbutton.jsx'
+
 import {
   ShareButtons,
   ShareCounts,
@@ -55,7 +57,6 @@ export default class Cart extends Component {
     const cart = this
     const moment = require('moment');
     const numeral = require('numeral');
-
     const {
       FacebookShareButton
     } = ShareButtons;
@@ -90,9 +91,7 @@ export default class Cart extends Component {
             <div className="cart-options">
               <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="payment-modal">Contribute Now</a>
 
-              <a className="btn-rect btn-secondary" data-confirm="Are you sure?" data-title="WARNING!" rel="nofollow" data-method="delete" href="<%= cart_path(@cart) %>">
-                Cancel
-              </a>
+              <CancelButton user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} cart_id={cart.state.data.cart.id} />
             </div>
 
 
