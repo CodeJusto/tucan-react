@@ -8,9 +8,9 @@ import DashboardViewContainer from './containers/DashboardViewContainer.jsx'
 
 ReactDOM.render((
   <Router history={browserHistory}>
-    <Route path="/root" component={Layout}>
+    <Route path="/" component={Layout}>
       <Route path="/cart/:id" component={CartViewContainer} />
-      <Route path="/" component={DashboardViewContainer} />
+      <Route path="/dashboard" component={DashboardViewContainer} />
     </Route>
   </Router>
 ), document.getElementById('root'))

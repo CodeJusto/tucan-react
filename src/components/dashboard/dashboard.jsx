@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import Cartbox from './carts/cartbox.jsx'
 import AddCart from './carts/addcart.jsx'
 import $, { ajax } from 'jquery';
-import { Link } from 'react-router'
-
+import { Link } from 'react-router';
 export default class Dashboard extends Component {
 
   componentDidMount() {
@@ -57,6 +56,7 @@ export default class Dashboard extends Component {
         </div>
 
         <div className="container">
+
           <Cartbox carts={this.state.data} />
 
         </div>

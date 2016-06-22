@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import $, { ajax } from 'jquery';
-
 import ProductBox from './products/productbox.jsx'
 import ProgressBox from './progress/progressbox.jsx'
 import ProgressBar from './progress/progress.jsx';
@@ -9,7 +8,6 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
-
 // import Navbar from '../navbar/navbar.jsx'
 // import Register from '../register.jsx'
 
@@ -54,7 +52,7 @@ export default class Cart extends Component {
           <div className="col s12 m8">
             <div className="cart-header">
               <h2>{cart.state.data.cart.name}</h2>
-              <div className="chip">status</div>
+              <div className="chip">{cart.state.data.cart.status.text}</div>
             </div>
             
               <ProgressBox 

@@ -61,6 +61,7 @@
     "react": "^0.14.6",
     "react-credit-card": "^0.10.0",
     "react-dom": "^0.14.6",
+    "react-facebook-login": "^3.0.0",
     "react-router": "^2.4.1"
   }
 }
