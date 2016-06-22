@@ -2,11 +2,16 @@ import React, { Component } from 'react';
 import Layout from './Layout.jsx'
 import Dashboard from '../components/dashboard/dashboard.jsx';
 import cookie from 'react-cookie';
+import $ from 'jquery';
+
 
 var DashboardViewContainer = React.createClass({
+  
+
   getDefaultProps() {
     return {
-      title: 'Dashboard'
+      title: 'Dashboard',
+      page: 'dashboard'
     };
   },
   render: function() {

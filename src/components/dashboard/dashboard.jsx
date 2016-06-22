@@ -20,13 +20,28 @@ export default class Dashboard extends Component {
       , "Salut"
       , "Hallo"
       , "Hola"
-      , "Gday"
       , "Hey"
       , "Ahoy"
     ];
 
     var greeting_id = Math.floor(Math.random() * greetings.length);
     this.greeting = greetings[greeting_id];
+
+    $(window).scroll(function(){
+      // current position
+      var cur_pos = $(this).scrollTop();
+
+      // scroll trigger menu
+      var showOn = $('.user-greeting').outerHeight() - $('nav').outerHeight() - 2;
+      if (cur_pos > showOn && !$("nav").hasClass('is-visible')) {
+          $("nav").addClass('is-visible');
+      } else {
+        if (cur_pos < showOn && $("nav").hasClass('is-visible')) {
+          $("nav").removeClass('is-visible');
+        }
+      }
+    });
+
   }
 
   componentDidMount() {
