@@ -5,6 +5,13 @@ import AddCart from './carts/addcart.jsx'
 import $, { ajax } from 'jquery';
 import { Link } from 'react-router'
 
+// import { showStaggeredList } from "materialize-css/js/transitions.js";
+
+require('expose?$!expose?jQuery!jquery'); //Required by Materialize
+require("../../lib/materialize.min.js");
+require('../../lib/js-cookie.js');
+
+
 export default class Dashboard extends Component {
 
   componentDidMount() {
@@ -28,6 +35,7 @@ export default class Dashboard extends Component {
 
   loadCartsFromServer() {
       // console.log(this.props)
+
     ajax({
       url: (this.props.url),
       dataType: 'json',
@@ -36,6 +44,7 @@ export default class Dashboard extends Component {
       success: data => {
         // console.log('Success', this.initialLoad);
         this.setState({data: data});
+        
       },
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });

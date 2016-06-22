@@ -9,6 +9,12 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
+import SocialBar from './social/socialbar.jsx';
+import {
+  ShareButtons,
+  ShareCounts,
+  generateShareIcon,
+} from 'react-share';
 
 // import Navbar from '../navbar/navbar.jsx'
 // import Register from '../register.jsx'
@@ -20,10 +26,15 @@ export default class Cart extends Component {
   componentDidMount() {
     this.loadCartFromServer()
     this._timer = setInterval(() => this.loadCartFromServer(), this.props.interval);
+
   }
 
   componentWillUnmount() {
     clearInterval(this._timer);
+  }
+
+  componentDidUpdate() {
+    $('ul.tabs').tabs();
   }
 
   loadCartFromServer() {
@@ -38,16 +49,24 @@ export default class Cart extends Component {
       error: (xhr, status, err) => console.error(this.props.url, status, err.toString())
     });
   }
-  
+
+
   render() {
     const cart = this
     const moment = require('moment');
     const numeral = require('numeral');
 
+    const {
+      FacebookShareButton
+    } = ShareButtons;
 
+    const shareUrl = 'http://github.com';
+    const title = 'GitHub';
     if(!this.state) {
       return <div><h1>Loading....</h1></div>
     }
+
+
     return (
       <div className="container">
         <div className="row" id="cart-top">
@@ -56,7 +75,6 @@ export default class Cart extends Component {
               <h2>{cart.state.data.cart.name}</h2>
               <div className="chip">status</div>
             </div>
-            
               <ProgressBox 
                 created_at={cart.state.data.cart.created_at}
                 expiry={cart.state.data.cart.expiry}
@@ -69,7 +87,7 @@ export default class Cart extends Component {
 
           <div className="col s12 m4">
             <div className="cart-options">
-              <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-trigger">Contribute Now</a>
+              <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-btn">Contribute Now</a>
               <a className="btn-rect btn-secondary" data-confirm="Are you sure?" data-title="WARNING!" rel="nofollow" data-method="delete" href="<%= cart_path(@cart) %>">
                 Cancel
               </a>
@@ -78,15 +96,16 @@ export default class Cart extends Component {
 
             <ul id="cart-options">
               <li>
-                <a href="#invite-modal" className="modal-trigger">
-                  <i className="material-icons">group_add</i>
-                  Share
-                </a>
+                <FacebookShareButton url={shareUrl} title={title} className="Facebook-share-button">
+                  <a href="#  ">
+                    <i className="fa fa-facebook"></i>  Share
+                  </a>
+                </FacebookShareButton>
               </li>
               <li>
-                <a href="#notification-modal" className="modal-trigger" data-modal="notification-modal">
+                <a href="#notification-modal" className="modal-btn" data-modal="notification-modal">
                   <i className="material-icons">notifications</i>
-                  Notifications
+                   Email Invite
                 </a>
               </li>
             </ul>
@@ -110,8 +129,9 @@ export default class Cart extends Component {
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
           </div>
         </div>
-
         <NotificationModal />
+        
+
       </div>
     ) 
   }
