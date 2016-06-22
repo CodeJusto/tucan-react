@@ -11,7 +11,7 @@ export default class CancelButton extends Component {
       )
     } else {
       return (
-        <div></div>
+        <span></span>
       )
     }
     

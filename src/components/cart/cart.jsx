@@ -17,12 +17,6 @@ import {
   generateShareIcon,
 } from 'react-share';
 
-
-// import Navbar from '../navbar/navbar.jsx'
-// import Register from '../register.jsx'
-
-
-
 export default class Cart extends Component {
 
   componentDidMount() {
