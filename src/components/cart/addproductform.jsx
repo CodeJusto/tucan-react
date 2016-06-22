@@ -30,9 +30,7 @@ var AddProductForm = React.createClass({
           dataType: 'json',
           url: 'http://localhost:4000/api/carts/' + this.props.cart_id + '/products',
           data: { display_name: this.state.display_name, url: this.state.url, cart_id: this.props.cart_id, quantity: this.state.quantity }
-    }).done((){
-      
-    })
+    });
   },
 
   render() {
@@ -47,19 +45,19 @@ var AddProductForm = React.createClass({
               <form className="col s12" id="addProduct" onSubmit={this.handleSubmit}>
                 <div className="row">
                   <div className="input-field col s12"> 
-                    <input type="text" name="display_name" placeholder="Display name" onChange={this.handleNameChange} />
+                    <input type="text" name="display_name" onChange={this.handleNameChange} />
                     <label htmlFor="display_name">Product name</label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s12"> 
-                    <input type="text" name="url" placeholder="Product URL" onChange={this.handleUrlChange} />
+                    <input type="text" name="url" onChange={this.handleUrlChange} />
                     <label htmlFor="url">URL</label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s12"> 
-                    <input type="number" min="1" name="quantity" placeholder="Quantity" onChange={this.handleQuantityChange} />
+                    <input type="number" min="1" name="quantity" onChange={this.handleQuantityChange} />
                     <label htmlFor="quantity">Quantity</label>
                   </div>
                 </div>

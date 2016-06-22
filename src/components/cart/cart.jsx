@@ -14,6 +14,7 @@ import {
   ShareCounts,
   generateShareIcon,
 } from 'react-share';
+import cookie from 'react-cookie';
 
 
 // import Navbar from '../navbar/navbar.jsx'
@@ -83,7 +84,6 @@ export default class Cart extends Component {
                 totalCost={cart.state.data.cart.total}
                 totalPayment={cart.state.data.cart.total_payment}
                 progress={cart.state.data.cart.progress} />
-                <PaymentForm />
           </div>
 
           <div className="col s12 m4">
@@ -132,8 +132,8 @@ export default class Cart extends Component {
           </div>
         </div>
         <NotificationModal />
-        <PaymentForm />
-        <AddProductForm cart_id={this.props.cart_id} />
+        <PaymentForm cart_id={this.props.cart_id} user_id={this.props.user_id} />
+        <AddProductForm cart_id={this.props.cart_id} user_id={this.props.user_id} />
 
       </div>
     ) 

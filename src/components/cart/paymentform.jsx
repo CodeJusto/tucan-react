@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
+import $, { ajax } from 'jquery';
 
 var PaymentForm = React.createClass({
 
@@ -43,8 +43,8 @@ var PaymentForm = React.createClass({
       }
       else {
         self.setState({ paymentComplete: true, submitDisabled: false, token: response.id });
-        $.ajax({
-          type: 'POST',
+        ajax({
+          type: "POST",
           url: 'http://localhost:4000/api/charges',
           data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.props.cart_id, user_id: this.props.user_id }
         });
@@ -72,7 +72,7 @@ var PaymentForm = React.createClass({
           </div>
           <div className="modal-content">
             <div className="row">
-              <form onSubmit={this.handleSubmit} className="col s12" id="addCart" onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit} className="col s12" id="addCart">
                 <div className="row">
                   <div className="input-field col s12">
                     <input type='number' step="any" placeholder='amount' value={this.state.amount} onChange={this.handleAmountChange} /><br />
@@ -105,13 +105,7 @@ var PaymentForm = React.createClass({
                 </div>
                 <div className="row">
                   <div className="input-field col s12">
-                    <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
-                    <label htmlFor="email">CVC</label>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input disabled={this.state.submitDisabled} type='submit' value='Complete payment' />
+                    <input type='submit' value='Complete payment' />
                   </div>
                 </div>
               </form>
