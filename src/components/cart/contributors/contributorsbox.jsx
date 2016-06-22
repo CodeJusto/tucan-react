@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Contributors from './contributors.jsx';
 
+
 import $ from 'jquery';
 
 export default class ContributorsBox extends Component {
@@ -14,7 +15,7 @@ export default class ContributorsBox extends Component {
           <span>{organizer.name}</span>
         </div>
         {contributorBundle}
-        <a href="#" className="modal-btn" data-modal="invitation-modal">Invite your friends</a>
+
       </div>
     )
   }

@@ -9,9 +9,13 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
-import FacebookModal from './modals/facebookModal.jsx'
-import InvitationModal from './modals/invitationModal.jsx'
-// import InvitationModal from './modals/invitationModal.jsx'
+import SocialBar from './social/socialbar.jsx';
+import {
+  ShareButtons,
+  ShareCounts,
+  generateShareIcon,
+} from 'react-share';
+
 // import Navbar from '../navbar/navbar.jsx'
 // import Register from '../register.jsx'
 
@@ -47,6 +51,12 @@ export default class Cart extends Component {
     const moment = require('moment');
     const numeral = require('numeral');
 
+    const {
+      FacebookShareButton
+    } = ShareButtons;
+
+    const shareUrl = 'http://github.com';
+    const title = 'GitHub';
     if(!this.state) {
       return <div><h1>Loading....</h1></div>
     }
@@ -81,15 +91,16 @@ export default class Cart extends Component {
 
             <ul id="cart-options">
               <li>
-                <a href="#" className="modal-btn" data-modal="facebook-modal">
-                  <i className="material-icons">group_add</i>
-                  Share
-                </a>
+                <FacebookShareButton url={shareUrl} title={title} className="Facebook-share-button">
+                  <a href="#  ">
+                    <i className="fa fa-facebook"></i>  Share
+                  </a>
+                </FacebookShareButton>
               </li>
               <li>
                 <a href="#notification-modal" className="modal-btn" data-modal="notification-modal">
                   <i className="material-icons">notifications</i>
-                  Notifications
+                   Email Invite
                 </a>
               </li>
             </ul>
@@ -113,13 +124,9 @@ export default class Cart extends Component {
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
           </div>
         </div>
-        <FacebookModal user_id={this.state.data.current_user.id}/>
         <NotificationModal />
-        <InvitationModal cart_id={this.state.data.cart.id} user_id={this.state.data.current_user.id} />
-        <div>
-                <a target="_window" href="http://www.facebook.com/dialog/send?app_id=603654559803426&amp;link=http://www.nytimes.com/interactive/2015/04/15/travel/europe-favorite-streets.html
-  &amp;redirect_uri=https://www.domain.com/">Share on Facebook</a>
-        </div>
+        
+
       </div>
     ) 
   }
