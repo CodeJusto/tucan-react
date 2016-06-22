@@ -6,13 +6,14 @@ var ExecutionEnvironment = require('exenv');
 
 var Layout = React.createClass({
   propTypes: {
-    title: React.PropTypes.string
+    title: React.PropTypes.string,
+    page: React.PropTypes.string
   },
   
   render() {
     return (
       <div>
-        <div className="">
+        <div className={this.props.children.props.page}>
           <Navbar />
           {this.props.children}
         </div>
@@ -23,7 +24,7 @@ var Layout = React.createClass({
   },
   componentDidMount() {
     if (ExecutionEnvironment.canUseDOM) {
-      document.title = "Tucan";
+      document.title = this.props.children.props.title;
     }
   }
 });
