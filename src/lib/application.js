@@ -1,20 +1,6 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
-// about supported directives.
-//
-//= require jquery
-//= require jquery_ujs
-//= require_tree .
-//= require materialize-sprockets
-// import $ from 'jquery';
+// var $ = window.jQuery = require('jquery');
+// require('./materialize.min.js');
+
 
 window.fbAsyncInit = function() {
   FB.init({
@@ -33,7 +19,28 @@ window.fbAsyncInit = function() {
  }(document, 'script', 'facebook-jssdk'));
 
 $(function(){
-  $('.modal-trigger').leanModal();
+
+  // $('.modal-trigger').leanModal();
+  $('.modal-btn').click(function(e){
+    e.preventDefault();
+    console.log('click');
+    var id = "#" + $(this).data('modal');
+    $(id).addClass('open').fadeIn();
+    $('#materialize-lean-overlay').addClass('open').fadeIn();
+  });
+
+  $('.modal-close').click(function(e){
+    e.preventDefault();
+    $(this).parents('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+    $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+  });
+
+  $(document).on('keyup', function(e) {
+    if (e.keyCode === 27) {   // ESC key
+      $('.modal.open').fadeOut(600, function(){$(this).removeClass('open')});
+      $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+    }
+  });
 
   $(".button-collapse").sideNav({
       menuWidth: 300, // Default is 240
@@ -47,9 +54,15 @@ $(function(){
     selectYears: 5 // Creates a dropdown of 15 years to control year
   });
 
+<<<<<<< HEAD
   $('#contribution>ul.tabs').tabs();
 
   $('.collapsible').collapsible({
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
+
+    
+=======
+>>>>>>> 962d89b2e0f83f0c7351d610f0792992f53393ab
 });
+

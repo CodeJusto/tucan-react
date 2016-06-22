@@ -6,8 +6,6 @@ import CartImage from './cartimage.jsx';
 export default class Cart extends Component {
   constructor(props) {
     super(props);
-    console.log(props)
-    console.log("props")
   }
   render() {
     const moment = require('moment');
