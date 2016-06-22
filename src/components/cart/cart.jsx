@@ -31,6 +31,20 @@ export default class Cart extends Component {
 
   componentDidUpdate() {
     $('ul.tabs').tabs();
+  $('.modal-btn').click(function(e){
+    e.preventDefault();
+    console.log('click');
+    var id = "#" + $(this).data('modal');
+    $(id).addClass('open').fadeIn();
+    $('#materialize-lean-overlay').addClass('open').fadeIn();
+  });
+  
+  $('.modal-close').click(function(e){
+    e.preventDefault();
+    $(this).parents('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+    $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+  });
+
   }
 
   loadCartFromServer() {
@@ -123,7 +137,7 @@ export default class Cart extends Component {
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
           </div>
         </div>
-        <NotificationModal />
+        <NotificationModal cart_id={this.props.cart_id} user_id={this.props.user_id} />
         <PaymentForm cart_id={this.props.cart_id} user_id={this.props.user_id} />
         <AddProductForm cart_id={this.props.cart_id} user_id={this.props.user_id} />
 

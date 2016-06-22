@@ -20,12 +20,13 @@ export default class NotificationModal extends React.Component {
       dataType: "json",
       type: 'POST',
       data: {id: this.props.user_id,
+             cart_id: this.props.cart_id,
              email: email},
       success: data => {
         console.log(data)
       }
     });
-
+    console.log("Notifications")
   }
   render() {
     return (
@@ -41,7 +42,7 @@ export default class NotificationModal extends React.Component {
               <input className="emailField" name="email" type="text" onChange={this.emailHandler}/>
               <label htmlFor="email">Email</label>
             </div>
-            <input type="Submit" className="btn waves-effect waves-light" />
+            <input type="Submit" className="btn waves-effect waves-light modal-action modal-close" />
           </form>
         </div>
       </div>
