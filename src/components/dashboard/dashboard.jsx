@@ -8,7 +8,7 @@ import { Link } from 'react-router';
 // import { showStaggeredList } from "materialize-css/js/transitions.js";
 
 require('expose?$!expose?jQuery!jquery'); //Required by Materialize
-require("../../lib/materialize.min.js");
+// require("../../lib/materialize.min.js");
 require('../../lib/js-cookie.js');
 
 
@@ -19,6 +19,11 @@ export default class Dashboard extends Component {
     this.initialLoad = true;
     this.loadCartsFromServer();
     this._timer = setInterval(() => this.loadCartsFromServer(), this.props.interval);
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 5, // Creates a dropdown of 15 years to control year
+        container: 'body'  
+      });
   }
 
   componentWillUnmount() {

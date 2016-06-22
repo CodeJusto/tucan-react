@@ -11,6 +11,7 @@ var CartViewContainer = React.createClass({
     };
   },
   render() {
+
     var token = cookie.load('token');
     const cart_id = this.props.params.id;
     const url = "http://localhost:4000/api/carts/" + cart_id + "/" + token;

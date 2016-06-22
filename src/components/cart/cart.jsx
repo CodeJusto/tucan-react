@@ -8,7 +8,6 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
-import SocialBar from './social/socialbar.jsx';
 import CancelButton from './ops/cancelbutton.jsx'
 
 import {
@@ -16,6 +15,7 @@ import {
   ShareCounts,
   generateShareIcon,
 } from 'react-share';
+import cookie from 'react-cookie';
 
 export default class Cart extends Component {
 
@@ -78,7 +78,6 @@ export default class Cart extends Component {
                 totalCost={cart.state.data.cart.total}
                 totalPayment={cart.state.data.cart.total_payment}
                 progress={cart.state.data.cart.progress} />
-                <PaymentForm />
           </div>
 
           <div className="col s12 m4">
@@ -125,8 +124,10 @@ export default class Cart extends Component {
           </div>
         </div>
         <NotificationModal />
-        <PaymentForm />
-        <AddProductForm cart_id={this.props.cart_id} />
+        <PaymentForm cart_id={this.props.cart_id} user_id={this.props.user_id} />
+        <AddProductForm cart_id={this.props.cart_id} user_id={this.props.user_id} />
+
+
 
       </div>
     ) 

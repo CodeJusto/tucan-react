@@ -57,50 +57,49 @@ var AddCart = React.createClass({
           <div className="row">
             <form className="col s12" id="addCart" onSubmit={this.handleSubmit}>
               <div className="row">
-                <div className="input-field col s12">
-                  <input type="text" name="cart_name" placeholder="Cart name" onChange={this.handleChange}/>
+                <div className="input-field col s8">
+                  <input type="text" name="cart_name" onChange={this.handleChange}/>
                   <label htmlFor="email">Cart name</label>
                 </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input type="date" name="expiry" placeholder="End date" onChange={this.handleChange} />
+
+                <div className="input-field col s4">
+                  <input type="date" className="datepicker" name="expiry" onChange={this.handleChange} />
                   <label htmlFor="expiry">End date</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input type="text" name="street_address" placeholder="Street address" onChange={this.handleChange} />
+                  <input type="text" name="street_address" onChange={this.handleChange} />
                   <label htmlFor="street_address">Street Address</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input type="text" name="street_address2" placeholder="Street address 2 (optional)" onChange={this.handleChange} />
+                  <input type="text" name="street_address2" onChange={this.handleChange} />
                   <label htmlFor="street_address2">Street Address 2 (optional)</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input type="text" name="city" placeholder="City" onChange={this.handleChange} />
+                  <input type="text" name="city" onChange={this.handleChange} />
                   <label htmlFor="city">City</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input type="text" name="country" placeholder="Country" onChange={this.handleChange} />
+                  <input type="text" name="country" onChange={this.handleChange} />
                   <label htmlFor="country">Country</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                  <input type="text" name="province" placeholder="Province" onChange={this.handleChange} />
-                  <label htmlFor="province">Country</label>
+                  <input type="text" name="province" onChange={this.handleChange} />
+                  <label htmlFor="province">Province/State</label>
                 </div>
               </div>
               <div className="row">
                 <div className="input-field col s12">
-                <input type="text" name="zip_code" placeholder="Zip code" onChange={this.handleChange} />
+                <input type="text" name="zip_code" onChange={this.handleChange} />
                   <label htmlFor="zip_code">Zip/Postcode</label>
                 </div>
               </div>
