@@ -7,7 +7,7 @@ import $, { ajax } from 'jquery';
 // import { showStaggeredList } from "materialize-css/js/transitions.js";
 
 require('expose?$!expose?jQuery!jquery'); //Required by Materialize
-require("../../lib/materialize.min.js");
+// require("../../lib/materialize.min.js");
 require('../../lib/js-cookie.js');
 
 
@@ -19,6 +19,11 @@ export default class Dashboard extends Component {
     this.initialLoad = true;
     this.loadCartsFromServer();
     this._timer = setInterval(() => this.loadCartsFromServer(), this.props.interval);
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 5, // Creates a dropdown of 15 years to control year
+        container: 'body'  
+      });
   }
 
   componentWillUnmount() {
@@ -69,10 +74,16 @@ export default class Dashboard extends Component {
         <div className="container">
 
           <Cartbox carts={this.state.data} />
-
+          <form>
+            <div className="row">
+              <div className="input-field col s8 offset-s2">
+              <input type="date" className="datepicker" />
+              </div>
+            </div>
+          </form>
         </div>
         <div>
-        <a href="#add-cart-modal" className="btn-floating btn-large waves-effect waves-light pink modal-trigger" id="new-cart-btn"><i className="material-icons">add</i></a>  
+        <a href="#" className="btn-floating btn-large waves-effect waves-light pink modal-btn" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
         <AddCart />
         </div>
             <div>

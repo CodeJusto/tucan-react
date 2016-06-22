@@ -30,7 +30,9 @@ var AddProductForm = React.createClass({
           dataType: 'json',
           url: 'http://localhost:4000/api/carts/' + this.props.cart_id + '/products',
           data: { display_name: this.state.display_name, url: this.state.url, cart_id: this.props.cart_id, quantity: this.state.quantity }
-    });
+    }).done((response) => {
+      console.log(response);
+    })
   },
 
   render() {

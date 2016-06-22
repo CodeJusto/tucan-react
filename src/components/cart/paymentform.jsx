@@ -47,7 +47,9 @@ var PaymentForm = React.createClass({
           type: "POST",
           url: 'http://localhost:4000/api/charges',
           data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.props.cart_id, user_id: this.props.user_id }
-        });
+        }).done((response) => {
+          console.log(response);
+        })
       }
     });
   },
@@ -68,44 +70,43 @@ var PaymentForm = React.createClass({
           <div className="modal-header center-align">
             <h4>Make a payment</h4>
             <span>{ this.state.paymentError }</span><br />
-            <a href="#" className="modal-action modal-close waves-effect waves-green btn-flat"><i className="material-icons">clear</i></a>
+            <a href="#" className="modal-action modal-close waves-effect waves-light btn-flat"><i className="material-icons">clear</i></a>
           </div>
           <div className="modal-content">
             <div className="row">
               <form onSubmit={this.handleSubmit} className="col s12" id="addCart">
                 <div className="row">
-                  <div className="input-field col s12">
-                    <input type='number' step="any" placeholder='amount' value={this.state.amount} onChange={this.handleAmountChange} /><br />
+                  <div className="input-field col s8 offset-s2">
+                    <input type='number' step="any" value={this.state.amount} onChange={this.handleAmountChange} /><br />
                     <label htmlFor="email">Payment amount</label>
                   </div>
                 </div>
                 <div className="row">
-                  <div className="input-field col s12">
-                    <input type='text' data-stripe='number' placeholder='credit card number' /><br />
-                    <label htmlFor="email">Credit card number</label>
+                  <div className="input-field col s8 offset-s2">
+                    <input type='text' data-stripe='number' /><br />
+                    <label htmlFor="number">Credit card number</label>
                   </div>
                 </div>
                 <div className="row">
-                  <div className="input-field col s12">
-                    <input type='text' data-stripe='exp-month' placeholder='expiration month' /><br />
-                    <label htmlFor="email">MM</label>
+                  <div className="input-field col s2 offset-s2">
+                    <p>GOOD THRU<i className="material-icons tiny">play_arrow</i></p>
+                  </div>
+                  <div className="input-field col s1">
+                    <input type='text' data-stripe='exp-month' />
+                    <label htmlFor="exp-month">MM</label>
+                  </div>
+                  <div className="input-field col s1">
+                    <input type='text' data-stripe='exp-year' /><br />
+                    <label htmlFor="exp-year">YY</label>
+                  </div>
+                  <div className="input-field col s2 offset-s2">
+                    <input type='text' data-stripe='cvc' /><br />
+                    <label htmlFor="cvc">CVC</label>
                   </div>
                 </div>
                 <div className="row">
-                  <div className="input-field col s12">
-                    <input type='text' data-stripe='exp-year' placeholder='expiration year' /><br />
-                    <label htmlFor="email">YY</label>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input type='text' data-stripe='cvc' placeholder='cvc' /><br />
-                    <label htmlFor="email">CVC</label>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="input-field col s12">
-                    <input type='submit' value='Complete payment' />
+                  <div className="input-field col s4 offset-s4">
+                    <input type='submit' value='Complete payment' className="waves-effect waves-green btn-primary btn-flat" />
                   </div>
                 </div>
               </form>
