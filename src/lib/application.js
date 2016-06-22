@@ -1,6 +1,7 @@
 // var $ = window.jQuery = require('jquery');
 // require('./materialize.min.js');
 
+
 window.fbAsyncInit = function() {
   FB.init({
     appId      : '603654559803426',
@@ -41,7 +42,6 @@ $(function(){
     }
   });
 
-
   $(".button-collapse").sideNav({
       menuWidth: 300, // Default is 240
       edge: 'right', // Choose the horizontal origin
@@ -52,6 +52,12 @@ $(function(){
   $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 5 // Creates a dropdown of 15 years to control year
+  });
+
+  $('#contribution>ul.tabs').tabs();
+
+  $('.collapsible').collapsible({
+    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
 
 });

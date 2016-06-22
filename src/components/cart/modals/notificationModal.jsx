@@ -6,26 +6,15 @@ export default class NotificationModal extends React.Component {
     return (
       <div id="notification-modal" className="modal">
         <div className="modal-header center-align">
-          <h4>Notification Settings</h4>
+          <h4>Invite your friends!</h4>
           <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat"><i className="material-icons">clear</i></a>
         </div>
-        
         <div className="modal-content">
-          <div className="row">
-            <form>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input id="email" type="text" className="validate" />
-                  <label htmlFor="email">Email</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col s12 right-align">
-                  <button className="btn waves-effect waves-light" type="submit" name="action">Save</button>
-                </div>
-              </div>
-            </form>
-          </div>
+
+          <form onSubmit={this.emailSubmit}>
+            <input className="emailField" type="text" onChange={this.emailHandler}/>
+            <input type="Submit" />
+          </form>
         </div>
       </div>
     )
