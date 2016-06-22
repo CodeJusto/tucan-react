@@ -10,7 +10,7 @@ export default class PaymentsBox extends Component {
     var moment = require('moment');
     var now = moment().format("MMM Do, YYYY");
     var numeral = require('numeral');
-    const allPayments = this.props.payments.map(payment => <Payments key={payment.id} amount={numeral(payment.amount).divide(100).format('$0,0.00')} payee={payment.user.name} date={moment(payment.created_at).startOf("second").fromNow()}/>)
+    const allPayments = this.props.payments.map(payment => <Payments key={payment.id} amount={numeral(payment.amount).divide(100).format('$0,0.00')} payee={payment.user.name} date={moment(payment.created_at).startOf("second").fromNow()} image={payment.user.image} />)
     if (this.props.payments.length > 0) {
       return (
         <div id="payments" className="col s12">

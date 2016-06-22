@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
 
 export default class CartImage extends Component {
   render() {
-    // const numeral = require('numeral');
-    // var divStyle = {
-    //   width: numeral(this.props.progress).divide(100).format('0%')
-    // };
 
     if (this.props.image.length > 0) {
       return (
         <div className="cart-image col s12 m3">
-          <a href="#">
+          <Link to={this.props.url}>
             <img src={this.props.image[0]} />
-          </a>
+          </Link>
         </div>
       )
     } else {
       return (
         <div className="cart-image col s12 m3">
           <a href="#">
-            <img src="/src/images/toucan.png" />
           </a>
+          <Link to={this.props.url}>
+            <img src="/src/images/toucan.png" />
+          </Link>
         </div>
       )
     }

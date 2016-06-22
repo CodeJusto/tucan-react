@@ -15,7 +15,7 @@ export default class Cart extends Component {
     return (
       <li className="col s12">
         <div className="cart-card row">
-          <CartImage image={this.props.cart.thumb_img} />
+          <CartImage image={this.props.cart.thumb_img} url={url} />
           <div className="cart-content col s12 m9">
             <h3 className="cart-name">{this.props.cart.name}</h3>
             <div className="cart-organizer">{this.props.cart.organizer.name}</div>

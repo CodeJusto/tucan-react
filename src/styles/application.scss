@@ -502,6 +502,7 @@ section#hero {
       img {
         width: 100%;
         display: block;
+        border-radius: 50%;
       }
     }
 
@@ -533,6 +534,9 @@ section#hero {
       line-height: 50px;
       border-radius: 25px;
       text-align: left;
+      border: 1px solid $light-grey;
+      background-color: transparent;
+      box-sizing: content-box;
 
       img {
         width: 50px;
