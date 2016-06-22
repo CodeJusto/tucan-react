@@ -36,6 +36,8 @@ export default class Dashboard extends Component {
     {
       Materialize.showStaggeredList('.cart-list');
       this.initialLoad = false;
+    } else {
+      $('.cart-list > li').css('opacity', 1);
     }
   }
 
@@ -75,8 +77,8 @@ export default class Dashboard extends Component {
           <Cartbox carts={this.state.data} />
         </div>
         <div>
-          <a href="#add-cart-modal" className="btn-floating btn-large waves-effect waves-light pink modal-trigger" id="new-cart-btn"><i className="material-icons">add</i></a>  
-          <AddCart />
+          <a href="#" className="btn-floating btn-large waves-effect waves-light pink modal-btn" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
+          <AddCart user_id={this.props.user_id} />
         </div> 
       </div>  
     )

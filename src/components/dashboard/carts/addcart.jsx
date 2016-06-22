@@ -6,7 +6,7 @@ var AddCart = React.createClass({
 
   getInitialState: function() {
     return {
-      cart_name: '',
+      name: '',
       expiry: '',
       street_address: '',
       street_address2: '',
@@ -29,8 +29,8 @@ var AddCart = React.createClass({
           type: 'POST',
           dataType: 'json',
           url: 'http://localhost:4000/api/carts',
-          data: JSON.stringify({ 
-                  id: this.props.user_id,
+          data: JSON.stringify({
+                  user_id: this.props.user_id,
                   name: this.state.name, 
                   expiry: this.state.expiry, 
                   street_address: this.state.street_address, 
@@ -58,13 +58,12 @@ var AddCart = React.createClass({
             <form className="col s12" id="addCart" onSubmit={this.handleSubmit}>
               <div className="row">
                 <div className="input-field col s8">
-                  <input type="text" name="cart_name" onChange={this.handleChange}/>
-                  <label htmlFor="email">Cart name</label>
+                  <input type="text" name="name" onChange={this.handleChange}/>
+                  <label htmlFor="name">Cart name</label>
                 </div>
 
                 <div className="input-field col s4">
-                  <input type="date" className="datepicker" name="expiry" onChange={this.handleChange} />
-                  <label htmlFor="expiry">End date</label>
+                  <input type="date" name="expiry" onChange={this.handleChange} />
                 </div>
               </div>
               <div className="row">

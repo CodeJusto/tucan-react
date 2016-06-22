@@ -19,7 +19,7 @@ export default class CartImage extends Component {
       return (
         <div className="cart-image col s12 m3">
           <a href="#">
-            <img src="http://placehold.it/500/ffffff/eeeeee" />
+            <img src="/src/images/toucan.png" />
           </a>
         </div>
       )
