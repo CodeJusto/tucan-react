@@ -12,6 +12,8 @@ require("../../lib/materialize.min.js");
 require('../../lib/js-cookie.js');
 
 
+import { Link } from 'react-router';
+
 export default class Dashboard extends Component {
 
   componentDidMount() {
@@ -66,6 +68,7 @@ export default class Dashboard extends Component {
         </div>
 
         <div className="container">
+
           <Cartbox carts={this.state.data} />
 
         </div>
