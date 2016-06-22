@@ -569,8 +569,9 @@ section#hero {
       line-height: 50px;
       border-radius: 25px;
       text-align: left;
-      border: 1px solid $light-grey;
-      background-color: transparent;
+      border: 1px solid #E6E4E2;
+      background-color: #fafafa;
+      color: #292F36;
       box-sizing: content-box;
 
       img {
@@ -579,7 +580,9 @@ section#hero {
         border-radius: 25px;
       }
 
-
+      span {
+        font-weight: 400;
+      }
     }
   }
 }
