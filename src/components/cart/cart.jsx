@@ -64,11 +64,12 @@ export default class Cart extends Component {
                 totalCost={cart.state.data.cart.total}
                 totalPayment={cart.state.data.cart.total_payment}
                 progress={cart.state.data.cart.progress} />
+                <PaymentForm />
           </div>
 
           <div className="col s12 m4">
             <div className="cart-options">
-              <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-trigger">Contribute Now</a>
+              <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="payment-modal">Contribute Now</a>
               <a className="btn-rect btn-secondary" data-confirm="Are you sure?" data-title="WARNING!" rel="nofollow" data-method="delete" href="<%= cart_path(@cart) %>">
                 Cancel
               </a>

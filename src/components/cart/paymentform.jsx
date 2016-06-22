@@ -64,11 +64,11 @@ var PaymentForm = React.createClass({
     }
     else {
       return (
-        <div id="notification-modal" className="modal">
+        <div id="payment-modal" className="modal">
           <div className="modal-header center-align">
             <h4>Make a payment</h4>
             <span>{ this.state.paymentError }</span><br />
-            <a href="#!" className="modal-action modal-close waves-effect waves-green btn-flat"><i className="material-icons">clear</i></a>
+            <a href="#" className="modal-action modal-close waves-effect waves-green btn-flat"><i className="material-icons">clear</i></a>
           </div>
           <div className="modal-content">
             <div className="row">
