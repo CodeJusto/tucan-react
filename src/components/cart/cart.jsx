@@ -8,19 +8,14 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
-import SocialBar from './social/socialbar.jsx';
+import CancelButton from './ops/cancelbutton.jsx'
+
 import {
   ShareButtons,
   ShareCounts,
   generateShareIcon,
 } from 'react-share';
 import cookie from 'react-cookie';
-
-
-// import Navbar from '../navbar/navbar.jsx'
-// import Register from '../register.jsx'
-
-
 
 export default class Cart extends Component {
 
@@ -56,7 +51,6 @@ export default class Cart extends Component {
     const cart = this
     const moment = require('moment');
     const numeral = require('numeral');
-
     const {
       FacebookShareButton
     } = ShareButtons;
@@ -90,9 +84,7 @@ export default class Cart extends Component {
             <div className="cart-options">
               <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="payment-modal">Contribute Now</a>
 
-              <a className="btn-rect btn-secondary" data-confirm="Are you sure?" data-title="WARNING!" rel="nofollow" data-method="delete" href="<%= cart_path(@cart) %>">
-                Cancel
-              </a>
+              <CancelButton user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} cart_id={cart.state.data.cart.id} />
             </div>
 
 
@@ -134,6 +126,8 @@ export default class Cart extends Component {
         <NotificationModal />
         <PaymentForm cart_id={this.props.cart_id} user_id={this.props.user_id} />
         <AddProductForm cart_id={this.props.cart_id} user_id={this.props.user_id} />
+
+
 
       </div>
     ) 

@@ -14,8 +14,9 @@ var DashboardViewContainer = React.createClass({
       cookie.save('token', this.props.location.query.token);
     }
     var token = cookie.load('token');
+    var url = "http://localhost:4000/api/carts/token/" + token
     return (
-        <Dashboard url='http://localhost:4000/api/carts/' user_id={token} interval={5000} />
+        <Dashboard url={url} user_id={token} interval={5000} />
     )
   }
 });

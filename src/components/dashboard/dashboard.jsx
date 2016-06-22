@@ -66,31 +66,19 @@ export default class Dashboard extends Component {
       <div>
         <div className="row user-greeting">
           <div className="col s12 center-align toucan-bg">
-            <h1>Ahoy, Username!</h1>
+            <h1>Ahoy, {this.state.data.user.name}!</h1>
 
           </div>
         </div>
 
         <div className="container">
-
           <Cartbox carts={this.state.data} />
-          <form>
-            <div className="row">
-              <div className="input-field col s8 offset-s2">
-              <input type="date" className="datepicker" />
-              </div>
-            </div>
-          </form>
         </div>
         <div>
-        <a href="#" className="btn-floating btn-large waves-effect waves-light pink modal-btn" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
-        <AddCart />
-        </div>
-            <div>
-      <AddCart />
-      </div> 
+          <a href="#add-cart-modal" className="btn-floating btn-large waves-effect waves-light pink modal-trigger" id="new-cart-btn"><i className="material-icons">add</i></a>  
+          <AddCart />
+        </div> 
       </div>  
-
     )
   }
 }

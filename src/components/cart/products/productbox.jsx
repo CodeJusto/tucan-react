@@ -13,6 +13,7 @@ export default class ProductBox extends Component {
           </ul>
           <a href="#" className="modal-btn" data-modal="add-product-modal"><i className="material-icons">add_circle</i> Add another product</a>
         </div>
+
       )
     } else {
       return (
@@ -20,6 +21,7 @@ export default class ProductBox extends Component {
           <p>You haven't added any products yet.</p>
           <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="add-product-modal">Add my first product</a>
         </div>
+
       )
     }
   }

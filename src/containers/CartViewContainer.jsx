@@ -11,14 +11,13 @@ var CartViewContainer = React.createClass({
     };
   },
   render() {
-    const cart = this
-    const cart_id = this.props.params.id
-    const user_id = this.props.location.query.token
-    const url = "http://localhost:4000/api/carts/" + cart_id
+
     var token = cookie.load('token');
+    const cart_id = this.props.params.id;
+    const url = "http://localhost:4000/api/carts/" + cart_id + "/" + token;
     return (
-            <Cart url={url} interval={5000} cart_id={cart_id} user_id={token} />
-    ) 
+      <Cart url={url} interval={5000} cart_id={cart_id} user_id={token}/>
+    )
   }
 });
 module.exports = CartViewContainer;
