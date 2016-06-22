@@ -5,13 +5,8 @@ import AddCart from './carts/addcart.jsx'
 import $, { ajax } from 'jquery';
 import { Link } from 'react-router';
 
-// import { showStaggeredList } from "materialize-css/js/transitions.js";
-
 require('expose?$!expose?jQuery!jquery'); //Required by Materialize
-// require("../../lib/materialize.min.js");
 require('../../lib/js-cookie.js');
-
-
 
 export default class Dashboard extends Component {
 
