@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import User from './user.jsx'
 import { Link } from 'react-router';
 import $ from 'jquery';
 
