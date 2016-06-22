@@ -8,7 +8,7 @@ import PaymentsBox from './payments/paymentsbox.jsx'
 import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
-import SocialBar from './social/socialbar.jsx';
+// import SocialBar from './social/
 import {
   ShareButtons,
   ShareCounts,
@@ -132,8 +132,9 @@ export default class Cart extends Component {
           </div>
         </div>
         <NotificationModal />
-        <PaymentForm />
+        <PaymentForm cart_id={cart.props.cart_id} user_id={cart.props.user_id} />
         <AddProductForm cart_id={this.props.cart_id} />
+
 
       </div>
     ) 
