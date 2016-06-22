@@ -12,8 +12,11 @@ export default class NotificationModal extends React.Component {
         <div className="modal-content">
 
           <form onSubmit={this.emailSubmit}>
-            <input className="emailField" type="text" onChange={this.emailHandler}/>
-            <input type="Submit" />
+            <div className="input-field">
+              <input className="emailField" name="email" type="text" onChange={this.emailHandler}/>
+              <label htmlFor="email">Email</label>
+            </div>
+            <input type="Submit" className="btn waves-effect waves-light" />
           </form>
         </div>
       </div>

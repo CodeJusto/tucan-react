@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import ContributorImage from './contributorimage.jsx'
 
 export default class Contributors extends Component {
   render() {
     return (
       <div className="chip">
-        <img src="http://placehold.it/150?text=%20" />
+        <ContributorImage image={this.props.image} />
         <span>{this.props.username}</span>
       </div>
     )
