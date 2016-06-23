@@ -124,7 +124,7 @@ export default class Dashboard extends Component {
       <div>
         <div className="row user-greeting">
           <div className="col s12 center-align toucan-bg">
-            <h1>Ahoy, {this.state.data.user.name}!</h1>
+            <h1>{this.greeting}, {this.state.data.user.name}!</h1>
 
           </div>
         </div>

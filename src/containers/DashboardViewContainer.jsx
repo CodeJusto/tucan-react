@@ -15,7 +15,8 @@ var DashboardViewContainer = React.createClass({
     };
   },
   render: function() {
-    if (this.props.location.query.token) {
+    if (this.props.location.query.token && this.props.location.query.token !== cookie.load('token') ) {
+      cookie.remove('token')
       cookie.save('token', this.props.location.query.token);
     }
     var token = cookie.load('token');

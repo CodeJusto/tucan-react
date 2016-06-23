@@ -110,7 +110,7 @@ export default class Cart extends Component {
           <div className="col s12 m4">
             <div className="cart-options">
               <PaymentButton status={cart.state.data.cart.status.id} />
-              <CancelButton user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} cart_id={cart.state.data.cart.id} />
+              <CancelButton user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} cart_id={cart.state.data.cart.id} cart_status={cart.state.data.cart.status_id} />
             </div>
 
 
