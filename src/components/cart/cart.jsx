@@ -9,7 +9,7 @@ import PaymentForm from './paymentform.jsx'
 import AddProductForm from './addproductform.jsx'
 import NotificationModal from './modals/notificationmodal.jsx'
 import CancelButton from './ops/cancelbutton.jsx'
-
+import PaymentButton from './ops/paymentbutton.jsx'
 import {
   ShareButtons,
   ShareCounts,
@@ -22,7 +22,6 @@ export default class Cart extends Component {
   componentDidMount() {
     this.loadCartFromServer()
     this._timer = setInterval(() => this.loadCartFromServer(), this.props.interval);
-
   }
 
   componentWillUnmount() {
@@ -30,9 +29,8 @@ export default class Cart extends Component {
   }
 
   componentDidUpdate() {
-        this.updateStatus();
-
-    $('ul.tabs').tabs();
+  $('ul.tabs').tabs();
+  this.updateStatus();
   $('.modal-btn').click(function(e){
     e.preventDefault();
     console.log('component did update!');
@@ -59,6 +57,7 @@ export default class Cart extends Component {
     }
   }
 
+
   loadCartFromServer() {
     ajax({
       url: this.props.url,
@@ -81,8 +80,10 @@ export default class Cart extends Component {
       FacebookShareButton
     } = ShareButtons;
 
+
     const shareUrl = 'http://localhost:4000';
     const title = 'Toucan';
+
     if(!this.state) {
       return <div><h1>Loading...</h1></div>
     }
@@ -108,8 +109,7 @@ export default class Cart extends Component {
 
           <div className="col s12 m4">
             <div className="cart-options">
-              <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="payment-modal">Contribute Now</a>
-
+              <PaymentButton status={cart.state.data.cart.status.id} />
               <CancelButton user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} cart_id={cart.state.data.cart.id} />
             </div>
 
@@ -140,12 +140,11 @@ export default class Cart extends Component {
             </ul>
 
             <ProductBox products={cart.state.data.cart.products} user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} />
-            <PaymentsBox payments={cart.state.data.cart.payments} />
+            <PaymentsBox status={cart.state.data.cart.status.id} payments={cart.state.data.cart.payments} />
           </div>
 
           <div className="col s12 m4 center-align" id="contribution">
             <div><span className="tab-label">Contributors</span></div>
-            
             <ContributorsBox contributors={cart.state.data.contributors} organizer={cart.state.data.organizer} />
           </div>
         </div>

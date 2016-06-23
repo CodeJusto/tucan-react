@@ -28,16 +28,29 @@ export default class Dashboard extends Component {
     this.greeting = greetings[greeting_id];
 
     $(window).scroll(function(){
+
       // current position
       var cur_pos = $(this).scrollTop();
-
-      // scroll trigger menu
+      console.log('cur ' + cur_pos);
+      // console.log($(window).innerHeight() + ' - ' + $('footer.page-footer').outerHeight());
+      // navbar
       var showOn = $('.user-greeting').outerHeight() - $('nav').outerHeight() - 2;
       if (cur_pos > showOn && !$("nav").hasClass('is-visible')) {
           $("nav").addClass('is-visible');
       } else {
         if (cur_pos < showOn && $("nav").hasClass('is-visible')) {
           $("nav").removeClass('is-visible');
+        }
+      }
+
+      // add new cart btn
+      var floatOn = $(document).innerHeight() - $(window).innerHeight() - $('footer.page-footer').innerHeight()/1.2;
+      console.log(floatOn);
+      if (cur_pos < floatOn && !$("#new-cart-btn").hasClass('is-floating')) {
+          $("#new-cart-btn").addClass('is-floating');
+      } else {
+        if (cur_pos > floatOn && $("#new-cart-btn").hasClass('is-floating')) {
+          $("#new-cart-btn").removeClass('is-floating');
         }
       }
     });
@@ -84,8 +97,6 @@ export default class Dashboard extends Component {
     });
   }
 
-
-
   loadCartsFromServer() {
       // console.log(this.props)
 
@@ -104,7 +115,6 @@ export default class Dashboard extends Component {
   }
 
   render() {
-    
 
     if(!this.state) {
       return <div><h1>Loading....</h1></div>
@@ -114,7 +124,8 @@ export default class Dashboard extends Component {
       <div>
         <div className="row user-greeting">
           <div className="col s12 center-align toucan-bg">
-            <h1>{this.greeting}, {this.state.data.user.name}!</h1>
+            <h1>Ahoy, {this.state.data.user.name}!</h1>
+
           </div>
         </div>
 
@@ -122,7 +133,7 @@ export default class Dashboard extends Component {
           <Cartbox carts={this.state.data} />
         </div>
         <div>
-          <a href="#" className="modal-btn btn-floating btn-large waves-effect waves-light pink" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
+          <a href="#" className="btn tooltipped modal-btn btn-floating btn-large waves-effect waves-light pink" id="new-cart-btn" data-tooltip="Add a cart" data-position="top" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
           <AddCart user_id={this.props.user_id} />
         </div> 
       </div>  

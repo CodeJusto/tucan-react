@@ -33,7 +33,6 @@ export default class NotificationModal extends React.Component {
       $('.emailField').val('')
       }
     });
-    console.log("Notifications")
   }
   render() {
     return (
@@ -49,7 +48,10 @@ export default class NotificationModal extends React.Component {
               <input className="emailField" name="email" type="text" onChange={this.emailHandler}/>
               <label htmlFor="email">Email</label>
             </div>
-            <input type="Submit" className="btn waves-effect waves-light" />
+
+            <div className="center-align">
+              <input type="Submit" className="btn waves-effect waves-light modal-action modal-close" />
+            </div>
           </form>
         </div>
       </div>
