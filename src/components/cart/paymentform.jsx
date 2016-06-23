@@ -50,7 +50,8 @@ var PaymentForm = React.createClass({
     let self = this;
     e.preventDefault();
     this.setState({ submitDisabled: true, paymentError: null });
-
+    if (validator.isFloat(this.state.amount))
+       Materialize.toast("You must pay at least the minimum payment.", 7000, 'materialize-red') 
     Stripe.createToken(e.target, (status, response) => {
       if (response.error) {
         self.setState({ paymentError: response.error.message, submitDisabled: false });

@@ -36,10 +36,10 @@ var AddProductForm = React.createClass({
     //   return
     // }
 
-    // if (validator.isNumeric(this.state.quantity) === false) {
-    //   console.log("Invalid quantity")
-    //   return // Add a toastbox
-    // }
+    if (validator.isNumeric(this.state.quantity, {min: 1}) === false) {
+       Materialize.toast("You must buy more than one!", 4000, 'materialize-red')
+      return // Add a toastbox
+    }
 
     $.ajax({
           type: 'POST',
