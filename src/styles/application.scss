@@ -1,22 +1,5 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
 @import "override";
 @import "~materialize-css/sass/materialize";
-
-
 
 @mixin transform($transforms) {
      -moz-transform: $transforms;
@@ -30,15 +13,10 @@
    @include transform(translate($x, $y));
 }
 
-.registration { 
-     display: none;
-}
-
 .pink {
   background-color: $hot-pink;
 }
 
-html,
 body {
   color: $text-dark;
 }
@@ -51,8 +29,6 @@ h5,
 h6 {
   font-family: 'Lato', 'Roboto', Arial
 }
-
-
 
 
 .tabs {
@@ -72,7 +48,6 @@ h6 {
 .tab-label {
   font-weight: 500;
 }
-
 
 .btn-rect {
   font-size: 1.2rem;
@@ -239,54 +214,11 @@ nav {
   }
 }
 
-section#hero {
-  background: url(http://blendermedia.com/wp-content/themes/blender2015/img/home-banner2.jpg);
-  //   url(http://jecamartinez.com/wp/wp-content/uploads/2014/04/Bg-Toucan.png);
-  background-size: cover;
-  height: 769px;
-  color: $text-light;
-  position: relative;
-
-  .logo {
-    margin: 0 3%;
-    h3 {
-      margin-top: 0;
-      line-height: 2;
-    }
-  }
-
-  .sign-in-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 26px 3% 0;
-  }
-
-  .cta {
-    position: absolute;
-    max-width: 45%;
-    left: 0;
-    top: 40%;
-    margin: 0 3%;
-
-    h1 {
-      margin-top: 0;
-      font-weight: 900;
-    }
-
-    h5 {
-      line-height: 1.5;
-      margin-bottom: 1rem;
-      font-weight: 400;
-    }
-  }
-}
-
 .modal {
   color: $text-dark;
   position: absolute;
-  max-height: 100%;
   border-radius: 8px;
+  overflow: visible;
 
   .modal-header {
     padding: 24px;
@@ -307,15 +239,11 @@ section#hero {
   }
 
   .modal-content {
-    border-bottom: 1px solid $border-grey;
+    // border-bottom: 1px solid $border-grey;
 
     .btn-facebook {
       @extend .blue, .darken-4;
     }
-  }
-
-  .modal-footer {
-    // color: $text-dark;
   }
 }
 
@@ -325,14 +253,13 @@ section#hero {
     opacity: 1;
     transform: scaleX(1);
     top: 10%;
-    max-height: 100%;
-    overflow-x: hidden;
+    max-height: 200%;
 }
 
 #materialize-lean-overlay.open {
   z-index: 1002;
   display: block;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .user-greeting {
@@ -494,6 +421,10 @@ section#hero {
     }
   }
 
+  .flow-text {
+    margin-top: 0;
+  }
+  
   .progress {
     margin-top: 3rem;
   }
@@ -574,6 +505,7 @@ section#hero {
 
     .product-ops {
       display: none;
+      margin-top: 0.5rem;
     }
   }
 
@@ -585,7 +517,11 @@ section#hero {
 #payments {
   margin: 0;
   margin-top: 1.78rem;
-  // padding: 0;
+  padding: 0;
+
+  .cart-options {
+    margin: 0;
+  }
 
   .payment-entry {
     padding: 1rem;
@@ -687,4 +623,12 @@ footer.page-footer {
   }
 }
 
-
+  input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }

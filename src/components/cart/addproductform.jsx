@@ -72,7 +72,7 @@ var AddProductForm = React.createClass({
                     <label htmlFor="display_name">Product name</label>
                   </div>
                   <div className="input-field col s4"> 
-                    <input type="number" min="1" name="quantity" className="productField" defaultValue="0" onChange={this.handleQuantityChange} />
+                    <input type="number" min="1" name="quantity" className="productField" onChange={this.handleQuantityChange} />
                     <label htmlFor="quantity">Quantity</label>
                   </div>
                 </div>

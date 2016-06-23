@@ -110,7 +110,7 @@ export default class Cart extends Component {
           <div className="col s12 m4">
             <div className="cart-options">
               <PaymentButton status={cart.state.data.cart.status.id} />
-              <CancelButton user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} cart_id={cart.state.data.cart.id} />
+              <CancelButton user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} cart_id={cart.state.data.cart.id} cart_status={cart.state.data.cart.status_id} />
             </div>
 
 
@@ -139,7 +139,7 @@ export default class Cart extends Component {
               <li className="tab col s3"><a href="#payments">Payments</a></li>
             </ul>
 
-            <ProductBox cart_id={cart.state.data.cart.id} products={cart.state.data.cart.products} user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} />
+            <ProductBox payments={cart.state.data.cart.payments} status={cart.state.data.cart.status.id} cart_id={cart.state.data.cart.id} products={cart.state.data.cart.products} user_id={cart.state.data.current_user.id} organizer_id={cart.state.data.organizer.id} />
             <PaymentsBox status={cart.state.data.cart.status.id} payments={cart.state.data.cart.payments} />
           </div>
 

@@ -9,6 +9,8 @@ export default class ProgressBox extends Component {
     const moment = require('moment');
     const now = moment().format("MMM Do, YYYY");
     const numeral = require('numeral');
+    var expiry = moment(this.props.expiry).endOf('s').fromNow(true).replace(/an?\s{1}/, "1")
+    expiry = expiry.replace(/(few seconds?)|(minutes?)|(hours?)|(days?)|(months?)|(years?)/, "")
 
     return (
       <div className="cart-meta">
@@ -18,8 +20,8 @@ export default class ProgressBox extends Component {
         </div>
 
         <div className="cart-submeta">
-          <h4>{moment(this.props.expiry).endOf('s').fromNow(true).replace(" days", "")}</h4>
-          <span>{moment(this.props.expiry).endOf('s').fromNow(true).replace(/[0-9]{1,}\s/g, "")} remaining</span>
+          <h4>{expiry}</h4>
+          <span>{moment(this.props.expiry).endOf('s').fromNow(true).replace(/an?\s{1}|[0-9]{1,}\s{1}/g, "")} remaining</span>
         </div>
 
         <div className="cart-submeta">

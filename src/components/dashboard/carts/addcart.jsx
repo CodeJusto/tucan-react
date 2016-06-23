@@ -7,13 +7,7 @@ var AddCart = React.createClass({
   getInitialState: function() {
     return {
       name: '',
-      expiry: '',
-      street_address: '',
-      street_address2: '',
-      country: '',
-      city: '',
-      province: '',
-      zip_code: ''
+      expiry: ''
     };
   },
 
@@ -43,8 +37,6 @@ var AddCart = React.createClass({
                 }),
           contentType: "application/json",
           success: data => {
-            console.log(data);
-              $('.productField').val('')
               $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
               $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
           }
@@ -64,53 +56,16 @@ var AddCart = React.createClass({
           <div className="row">
             <form className="col s12" id="addCart" onSubmit={this.handleSubmit}>
               <div className="row">
-                <div className="input-field col s8">
+                <div className="input-field col s6">
                   <input type="text" name="name" onChange={this.handleChange}/>
                   <label htmlFor="name">Cart name</label>
                 </div>
-
-                <div className="input-field col s4">
-                  <input type="date" name="expiry" onChange={this.handleChange} />
+                <div className="input-field col s6">
+                  <input type="date" placeholder="End date  " />
                 </div>
               </div>
               <div className="row">
-                <div className="input-field col s12">
-                  <input type="text" name="street_address" onChange={this.handleChange} />
-                  <label htmlFor="street_address">Street Address</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input type="text" name="street_address2" onChange={this.handleChange} />
-                  <label htmlFor="street_address2">Street Address 2 (optional)</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input type="text" name="city" onChange={this.handleChange} />
-                  <label htmlFor="city">City</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input type="text" name="country" onChange={this.handleChange} />
-                  <label htmlFor="country">Country</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                  <input type="text" name="province" onChange={this.handleChange} />
-                  <label htmlFor="province">Province/State</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="input-field col s12">
-                <input type="text" name="zip_code" onChange={this.handleChange} />
-                  <label htmlFor="zip_code">Zip/Postcode</label>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col s12 right-align">
+                <div className="col s12 center-align">
                   <button className="btn waves-effect waves-light" type="submit" name="action">Add cart
                   </button>
                 </div>
