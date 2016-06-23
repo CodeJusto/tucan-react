@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+
 
 export default class Footer extends Component {
   render() {
@@ -7,9 +9,9 @@ export default class Footer extends Component {
         <div className="container">
           <div className="row">
             <div className="col l4 s12">
-              <a href="/dashboard" className="logo">
+              <Link to="/dashboard" className="logo">
                 <img src="http://i.imgur.com/pk4uMob.png" /><h1>Tucan</h1>
-              </a>
+              </Link>
             </div>
             <div className="col l3 offset-l2 s12">
               <h5 className="white-text">About Tucan</h5>

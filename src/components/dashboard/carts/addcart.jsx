@@ -61,7 +61,7 @@ var AddCart = React.createClass({
                   <label htmlFor="name">Cart name</label>
                 </div>
                 <div className="input-field col s6">
-                  <input type="date" placeholder="End date  " />
+                  <input type="date" name="expiry" onChange={this.handleChange} placeholder="End date   "/>
                 </div>
               </div>
               <div className="row">
