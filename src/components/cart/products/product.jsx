@@ -17,7 +17,7 @@ export default class Product extends React.Component {
           <h5>{this.props.product.display_name}</h5>
           <p>{numeral(this.props.product.price).divide(100).format('$0,0[.]00')} x {this.props.product.quantity}</p>
 
-          <ProductOps product={this.props.product} />
+          <ProductOps product={this.props.product} cart_id={this.props.cart_id} user_id={this.props.user_id} />
           <a href={this.props.product.url} target="_blank" className="secondary-content"><i className="material-icons">open_in_new</i></a>
 
         </li>

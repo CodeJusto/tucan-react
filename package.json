@@ -68,6 +68,5 @@
     "react-router": "^2.4.1",
     "react-share": "^1.8.0",
     "validator": "^5.4.0"
-    "react-facebook-login": "^3.0.0"
   }
 }
