@@ -214,8 +214,7 @@ nav {
   z-index: 0;
 }
 
-.toucan-bg,
-.page-footer {
+.toucan-bg {
   background: linear-gradient(179deg, #ff6b6b, #4e78cd);
   background-size: 400% 400%;
 
@@ -438,7 +437,8 @@ section#hero {
 // cart page
 .cart {
   .container {
-    padding-top: 30px + 64px;
+    padding-top: 20px + 64px;
+    padding-bottom: 24px;
   }
 }
 
@@ -632,6 +632,44 @@ section#hero {
 
 footer.page-footer {
   margin-top: 0;
+  background-color: $text-dark;
+
+  h5 {
+    font-size: 1.24rem;
+  }
+
+  ul>li>a {
+    font-size: 0.9rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .logo {
+    display: inline-block;
+    // width: 64px;
+    height: 64px;
+    padding: 0;
+    margin-top: 0.82rem;
+    color: $text-light;
+
+    img {
+      width: 40px;
+      display: inline;
+      vertical-align: text-bottom;
+    }
+
+    h1 {
+      font-size: 30px;
+      line-height: 40px;
+      display: inline;
+      font-weight: 300;
+      margin-left: 0.4rem;
+      vertical-align: top;
+    }
+  }
 }
 
 
