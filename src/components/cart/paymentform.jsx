@@ -54,6 +54,8 @@ var PaymentForm = React.createClass({
     Stripe.createToken(e.target, (status, response) => {
       if (response.error) {
         self.setState({ paymentError: response.error.message, submitDisabled: false });
+         Materialize.toast(this.state.paymentError, 7000, 'materialize-red') 
+         return
       }
       else {
         self.setState({ paymentComplete: true, submitDisabled: false, token: response.id });

@@ -1,6 +1,7 @@
 import React from 'react';
 import Component from 'react';
 import $, { ajax } from 'jquery';
+import validator from 'validator';
 
 export default class NotificationModal extends React.Component {
 
@@ -17,6 +18,9 @@ export default class NotificationModal extends React.Component {
       console.log("No email")
       return;
     }
+    if (validator.isEmail(email) == false) {
+      Materialize.toast("Please enter a valid email.", 4000, 'materialize-red')
+    } 
     ajax({
       url: "http://localhost:4000/carts/" + this.props.cart_id + "/invite",
       dataType: "json",
