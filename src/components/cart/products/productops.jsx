@@ -18,7 +18,9 @@ export default class ProductOps extends React.Component {
   }
   render() {
     return (
-      <p className="product-ops"><a href="#" onClick={this.deleteProduct.bind(this)} >Delete</a></p>
+      <div></div>
     )
   }
 }
+
+//       <p className="product-ops"><a href="#" onClick={this.deleteProduct.bind(this)} >Delete</a></p>

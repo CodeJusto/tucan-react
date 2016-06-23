@@ -36,10 +36,10 @@ var AddProductForm = React.createClass({
     //   return
     // }
 
-    // if (validator.isNumeric(this.state.quantity) === false) {
-    //   console.log("Invalid quantity")
-    //   return // Add a toastbox
-    // }
+    if (validator.isNumeric(this.state.quantity) === false) {
+       Materialize.toast("You must buy more than one!", 4000, 'materialize-red')
+      return // Add a toastbox
+    }
 
     $.ajax({
           type: 'POST',
@@ -72,7 +72,7 @@ var AddProductForm = React.createClass({
                     <label htmlFor="display_name">Product name</label>
                   </div>
                   <div className="input-field col s4"> 
-                    <input type="number" min="1" name="quantity" className="productField" defaultValue="1" onChange={this.handleQuantityChange} />
+                    <input type="number" min="1" name="quantity" className="productField" defaultValue="0" onChange={this.handleQuantityChange} />
                     <label htmlFor="quantity">Quantity</label>
                   </div>
                 </div>
