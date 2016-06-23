@@ -22,7 +22,7 @@ export default class NotificationModal extends React.Component {
       Materialize.toast("Please enter a valid email.", 4000, 'materialize-red')
     } 
     ajax({
-      url: "http://localhost:4000/carts/" + this.props.cart_id + "/invite",
+      url: "http://localhost:4000/api/carts/" + this.props.cart_id + "/users/invite",
       dataType: "json",
       type: 'POST',
       data: {id: this.props.user_id,
@@ -50,7 +50,7 @@ export default class NotificationModal extends React.Component {
             </div>
 
             <div className="center-align">
-              <input type="Submit" className="btn waves-effect waves-light modal-action modal-close" />
+              <input type="submit" className="btn waves-effect waves-light" />
             </div>
           </form>
         </div>

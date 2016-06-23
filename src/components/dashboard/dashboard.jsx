@@ -22,6 +22,7 @@ export default class Dashboard extends Component {
       , "Ahoy"
       , "Hi"
       , "Aloha"
+      , "Bonjour"
     ];
 
     var greeting_id = Math.floor(Math.random() * greetings.length);
