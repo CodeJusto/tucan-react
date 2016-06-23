@@ -56,7 +56,6 @@ export default class Dashboard extends Component {
     });
 
   }
->>>>>>> feature/ui
 
   componentDidMount() {
     this.initialLoad = true;
