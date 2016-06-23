@@ -35,6 +35,7 @@ $(function(){
   //   $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
   // });
 
+
   $(document).on('keyup', function(e) {
     if (e.keyCode === 27) {   // ESC key
       $('.modal.open').fadeOut(600, function(){$(this).removeClass('open')});
@@ -54,13 +55,18 @@ $(function(){
     selectMonths: true, // Creates a dropdown to control month
     selectYears: 5, // Creates a dropdown of 15 years to control year
     container: 'body'  
-});
+  });
 
   $('#contribution>ul.tabs').tabs();
 
   $('.collapsible').collapsible({
     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
   });
+
+// $("a[href='#top']").click(function() {
+//   $("html, body").animate({ scrollTop: 0 }, "slow");
+//   return false;
+// });
 
 });
 

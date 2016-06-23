@@ -33,8 +33,9 @@ export default class Cart extends Component {
     $('ul.tabs').tabs();
   $('.modal-btn').click(function(e){
     e.preventDefault();
-    console.log('click');
+    console.log('component did update!');
     var id = "#" + $(this).data('modal');
+    console.log($(id))
     $(id).addClass('open').fadeIn();
     $('#materialize-lean-overlay').addClass('open').fadeIn();
   });
@@ -105,7 +106,7 @@ export default class Cart extends Component {
             <ul id="cart-options">
               <li>
                 <FacebookShareButton url={shareUrl} title={title} className="Facebook-share-button">
-                  <a href="#  ">
+                  <a href="#">
                     <i className="fa fa-facebook"></i>  Share
                   </a>
                 </FacebookShareButton>
