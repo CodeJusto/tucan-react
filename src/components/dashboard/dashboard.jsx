@@ -88,7 +88,7 @@ export default class Dashboard extends Component {
           <Cartbox carts={this.state.data} />
         </div>
         <div>
-          <a href="#" className="modal-btn btn-floating btn-large waves-effect waves-light pink" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
+          <a href="#" className="btn tooltipped modal-btn btn-floating btn-large waves-effect waves-light pink" id="new-cart-btn" data-tooltip="Add a cart" data-position="top" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
           <AddCart user_id={this.props.user_id} />
         </div> 
       </div>  
