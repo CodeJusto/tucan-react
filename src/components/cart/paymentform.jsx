@@ -50,6 +50,8 @@ var PaymentForm = React.createClass({
     e.preventDefault();
     let self = this;
     this.setState({ submitDisabled: true, paymentError: null });
+        $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+        $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
  
     Stripe.createToken(e.target, (status, response) => {
       if (response.error) {
@@ -64,10 +66,8 @@ var PaymentForm = React.createClass({
           url: 'http://localhost:4000/api/charges',
           data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.props.cart_id, user_id: this.props.user_id }
         }).done((response) => {
-          console.log(response);
-        $('.ccField').val('')
-        $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
-        $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+          Materialize.toast('Your payment of' + this.state.amount + 'was successful!');
+          $('.ccField').val('')
         })
       }
     });
@@ -95,7 +95,6 @@ var PaymentForm = React.createClass({
         <div id="payment-modal" className="modal">
           <div className="modal-header center-align">
             <h4>Make a payment</h4>
-            <span>{ this.state.paymentError }</span><br />
             <a href="#" className="modal-action modal-close waves-effect waves-light btn-flat"><i className="material-icons">clear</i></a>
           </div>
           <div className="modal-content">
@@ -103,7 +102,7 @@ var PaymentForm = React.createClass({
               <form onSubmit={this.handleSubmit} className="col s12" id="addCart">
                 <div className="row">
                   <div className="input-field col s8 offset-s2">
-                    <input type='number' name='amount' defaultValue={parseFloat(minimum_payment)} min={minimum_payment} max={remaining_balance} onChange={this.handleAmountChange} /><br />
+                    <input type='number' name='amount' min={minimum_payment} max={remaining_balance} onChange={this.handleAmountChange} /><br />
                     <label htmlFor="amount">Minimum payment: ${minimum_payment}</label>
                   </div>
                 </div>
@@ -117,15 +116,15 @@ var PaymentForm = React.createClass({
                   <div className="input-field col s2 offset-s2">
                     <p>GOOD THRU<i className="material-icons tiny">play_arrow</i></p>
                   </div>
-                  <div className="input-field col s1">
+                  <div className="input-field col s2">
                     <input type='text' className="ccField" data-stripe='exp-month' />
                     <label htmlFor="exp-month">MM</label>
                   </div>
-                  <div className="input-field col s1">
+                  <div className="input-field col s2">
                     <input type='text' className="ccField" data-stripe='exp-year' /><br />
                     <label htmlFor="exp-year">YY</label>
                   </div>
-                  <div className="input-field col s2 offset-s2">
+                  <div className="input-field col s2">
                     <input type='text' className="ccField" data-stripe='cvc' /><br />
                     <label htmlFor="cvc">CVC</label>
                   </div>

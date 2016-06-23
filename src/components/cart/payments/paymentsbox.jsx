@@ -22,7 +22,7 @@ export default class PaymentsBox extends Component {
         <div id="payments" className="col s12">
           <div className="cart-options">
             <p className="flow-text">Nobody has contributed yet</p>
-            <a href="#payment-modal" className="btn-rect btn-primary waves-effect waves-light  modal-trigger">Contribute</a>
+            <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="payment-modal">Contribute</a>
           </div>
         </div>
       )

@@ -43,8 +43,6 @@ var AddCart = React.createClass({
                 }),
           contentType: "application/json",
           success: data => {
-            console.log(data);
-              $('.productField').val('')
               $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
               $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
           }
