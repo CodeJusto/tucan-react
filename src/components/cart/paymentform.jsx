@@ -66,7 +66,7 @@ var PaymentForm = React.createClass({
           url: 'http://localhost:4000/api/charges',
           data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.props.cart_id, user_id: this.props.user_id }
         }).done((response) => {
-          Materialize.toast('Your payment of' + this.state.amount + 'was successful!');
+          Materialize.toast('Your payment of' + this.state.amount + 'was successful!', 8000, 'materialize-green');
           $('.ccField').val('')
         })
       }
