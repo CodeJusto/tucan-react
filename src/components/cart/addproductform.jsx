@@ -46,9 +46,13 @@ var AddProductForm = React.createClass({
             <div className="row">
               <form className="col s12" id="addProduct" onSubmit={this.handleSubmit}>
                 <div className="row">
-                  <div className="input-field col s12"> 
+                  <div className="input-field col s8"> 
                     <input type="text" name="display_name" onChange={this.handleNameChange} />
                     <label htmlFor="display_name">Product name</label>
+                  </div>
+                  <div className="input-field col s4"> 
+                    <input type="number" min="1" name="quantity" defaultValue="1" onChange={this.handleQuantityChange} />
+                    <label htmlFor="quantity">Quantity</label>
                   </div>
                 </div>
                 <div className="row">
@@ -57,15 +61,10 @@ var AddProductForm = React.createClass({
                     <label htmlFor="url">URL</label>
                   </div>
                 </div>
+                
                 <div className="row">
-                  <div className="input-field col s12"> 
-                    <input type="number" min="1" name="quantity" onChange={this.handleQuantityChange} />
-                    <label htmlFor="quantity">Quantity</label>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="input-field col s12"> 
-                    <input type="submit" value="Add product" />
+                  <div className="input-field col s12 offset-s4"> 
+                    <input type="submit" className="waves-effect waves-green btn-primary btn-flat" value="Add product" />
                   </div>
                 </div>
               </form>

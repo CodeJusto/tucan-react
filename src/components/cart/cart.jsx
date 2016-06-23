@@ -30,6 +30,8 @@ export default class Cart extends Component {
   }
 
   componentDidUpdate() {
+        this.updateStatus();
+
     $('ul.tabs').tabs();
   $('.modal-btn').click(function(e){
     e.preventDefault();
@@ -44,7 +46,16 @@ export default class Cart extends Component {
     $(this).parents('.modal').fadeOut(600, function(){$(this).removeClass('open')});
     $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
   });
+  }
 
+  updateStatus() {
+    if (this.state.data.cart.status.id === 1) {
+      $('#statusChip').addClass('status-pending');
+    } else if (this.state.data.cart.status.id === 2) {
+      $('#statusChip').addClass('status-active');
+    } else if (this.state.data.cart.status.id === 4) {
+      $('#statusChip').addClass('status-achieved');
+    }
   }
 
   loadCartFromServer() {
@@ -72,7 +83,7 @@ export default class Cart extends Component {
     const shareUrl = 'http://github.com';
     const title = 'GitHub';
     if(!this.state) {
-      return <div><h1>Loading....</h1></div>
+      return <div><h1>Loading...</h1></div>
     }
 
 
@@ -82,7 +93,7 @@ export default class Cart extends Component {
           <div className="col s12 m8">
             <div className="cart-header">
               <h2>{cart.state.data.cart.name}</h2>
-              <div className="chip">{cart.state.data.cart.status.text}</div>
+              <div id="statusChip" className="chip">{cart.state.data.cart.status.text}</div>
             </div>
               <ProgressBox 
                 created_at={cart.state.data.cart.created_at}

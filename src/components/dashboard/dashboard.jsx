@@ -23,6 +23,7 @@ export default class Dashboard extends Component {
 
   componentWillUnmount() {
     clearInterval(this._timer);
+
   }
 
   componentDidUpdate()
@@ -34,7 +35,22 @@ export default class Dashboard extends Component {
     } else {
       $('.cart-list > li').css('opacity', 1);
     }
+      $('.modal-btn').click(function(e){
+      e.preventDefault();
+      console.log('click');
+      var id = "#" + $(this).data('modal');
+      $(id).addClass('open').fadeIn();
+      $('#materialize-lean-overlay').addClass('open').fadeIn();
+    });
+
+    $('.modal-close').click(function(e){
+      e.preventDefault();
+      $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+      $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+    });
   }
+
+
 
   loadCartsFromServer() {
       // console.log(this.props)
@@ -72,7 +88,7 @@ export default class Dashboard extends Component {
           <Cartbox carts={this.state.data} />
         </div>
         <div>
-          <a href="#" className="btn-floating btn-large waves-effect waves-light pink modal-btn" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
+          <a href="#" className="modal-btn btn-floating btn-large waves-effect waves-light pink" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
           <AddCart user_id={this.props.user_id} />
         </div> 
       </div>  

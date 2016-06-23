@@ -378,7 +378,21 @@ section#hero {
     vertical-align: middle;
     margin-bottom: -10px;
     margin-left: 0.5rem;
+
   }
+}
+    
+.chip.status-pending{
+  background-color: $dark-yellow;
+}
+
+.chip.status-active{
+  background-color: $primary-color;
+}
+
+.chip.status-achieved{
+  background-color: $primary-color-dark;
+  color: $text-light;
 }
 
 .cart-meta {
