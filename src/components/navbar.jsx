@@ -17,9 +17,9 @@ export default class Navbar extends Component {
    
     return (
       <nav>
-          <a href="/dashboard" className="logo">
+          <Link to="/dashboard" className="logo">
             <img src="http://i.imgur.com/pk4uMob.png" /><h1>Tucan</h1>
-          </a>
+          </Link>
         <ul className="right hide-on-med-and-down">
           <li><Link to="/dashboard">My Carts</Link></li>
           <li><a href="#!">Settings</a></li>
