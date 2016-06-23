@@ -26,7 +26,6 @@ export default class NotificationModal extends React.Component {
         console.log(data)
       }
     });
-    console.log("Notifications")
   }
   render() {
     return (
@@ -42,7 +41,9 @@ export default class NotificationModal extends React.Component {
               <input className="emailField" name="email" type="text" onChange={this.emailHandler}/>
               <label htmlFor="email">Email</label>
             </div>
-            <input type="Submit" className="btn waves-effect waves-light modal-action modal-close" />
+            <div className="center-align">
+              <input type="Submit" className="btn waves-effect waves-light modal-action modal-close" />
+            </div>
           </form>
         </div>
       </div>

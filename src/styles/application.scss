@@ -116,6 +116,7 @@ h6 {
 }
 
 nav {
+  height: 64px;
   background-color: $text-dark;
   position: fixed;
   z-index: 3;
@@ -123,6 +124,11 @@ nav {
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+
+  .button-collapse i {
+    height: 64px;
+    line-height: 64px;
+  }
 
   .side-nav {
     background-color: $text-dark;
@@ -133,8 +139,25 @@ nav {
   }
 
   .logo {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    // width: 64px;
+    height: 64px;
+    padding: 12px 15px;
+
+    img {
+      width: 40px;
+      display: inline;
+      vertical-align: text-bottom;
+    }
+
+    h1 {
+      font-size: 30px;
+      line-height: 40px;
+      display: inline;
+      font-weight: 300;
+      margin-left: 0.4rem;
+      vertical-align: top;
+    }
   }
 
   #nav-menu-btn {
@@ -255,7 +278,8 @@ section#hero {
 .modal {
   color: $text-dark;
   position: absolute;
-  // max-height: 100%;
+  max-height: 100%;
+  border-radius: 8px;
 
   .modal-header {
     padding: 24px;
@@ -307,7 +331,8 @@ section#hero {
 .user-greeting {
   h1 {
     color: $text-light;
-    padding: 5rem 2rem;
+    padding: 6rem 2rem;
+    margin: 0;
   }
 }
 
