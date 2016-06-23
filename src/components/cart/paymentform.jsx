@@ -54,6 +54,8 @@ var PaymentForm = React.createClass({
     Stripe.createToken(e.target, (status, response) => {
       if (response.error) {
         self.setState({ paymentError: response.error.message, submitDisabled: false });
+         Materialize.toast(this.state.paymentError, 7000, 'materialize-red') 
+         return
       }
       else {
         self.setState({ paymentComplete: true, submitDisabled: false, token: response.id });
@@ -90,7 +92,7 @@ var PaymentForm = React.createClass({
         <div id="payment-modal" className="modal">
           <div className="modal-header center-align">
             <h4>Make a payment</h4>
-            <span>{ this.state.paymentError }</span><br />
+            <span></span><br />
             <a href="#" className="modal-action modal-close waves-effect waves-light btn-flat"><i className="material-icons">clear</i></a>
           </div>
           <div className="modal-content">

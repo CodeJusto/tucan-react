@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import validator from 'validator';
 
 var AddProductForm = React.createClass({
 
@@ -26,6 +27,20 @@ var AddProductForm = React.createClass({
 
   handleSubmit: function(e) {
     e.preventDefault();
+    // if (validator.isURL(this.state.url + " ", {protocols: allow_underscores: true, allow_trailing_dot: true, allow_protocol_relative_urls: t}) === false) {
+    //   console.log("Invalid URL")
+    //   Materialize.toast("You didn't enter a real URL!", 4000, 'materialize-red')
+    //   return // Add a toastbox
+    // } else if (validator.contains(this.state.url, 'amazon.ca') === false) {
+    //   Materialize.toast("You didn't enter an amazon.ca URL!", 4000, 'materialize-red')
+    //   return
+    // }
+
+    // if (validator.isNumeric(this.state.quantity) === false) {
+    //   console.log("Invalid quantity")
+    //   return // Add a toastbox
+    // }
+
     $.ajax({
           type: 'POST',
           dataType: 'json',
@@ -33,6 +48,7 @@ var AddProductForm = React.createClass({
           data: { display_name: this.state.display_name, url: this.state.url, quantity: this.state.quantity, id: this.props.user_id }
     }).done((response) => {
       console.log(response);
+      $('.productField').val('')
       $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
       $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
     })
@@ -56,7 +72,7 @@ var AddProductForm = React.createClass({
                     <label htmlFor="display_name">Product name</label>
                   </div>
                   <div className="input-field col s4"> 
-                    <input type="number" min="1" name="quantity" defaultValue="1" onChange={this.handleQuantityChange} />
+                    <input type="number" min="1" name="quantity" className="productField" defaultValue="1" onChange={this.handleQuantityChange} />
                     <label htmlFor="quantity">Quantity</label>
                   </div>
                 </div>
@@ -67,12 +83,7 @@ var AddProductForm = React.createClass({
                   </div>
                 </div>
                 
-                <div className="row">
-                  <div className="input-field col s12"> 
-                    <input type="number" min="1" name="quantity" className="productField" onChange={this.handleQuantityChange} />
-                    <label htmlFor="quantity">Quantity</label>
-                  </div>
-                </div>
+              
                 <div className="row">
                   <div className="input-field col s12 offset-s4"> 
                     <input type="submit" className="waves-effect waves-green btn-primary btn-flat" value="Add product" />
