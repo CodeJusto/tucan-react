@@ -75,6 +75,9 @@ var PaymentForm = React.createClass({
   },
 
   render: function() {
+    const numeral = require('numeral');
+    let minimum_payment = numeral(this.props.minimum_payment).divide(100).format('0,0.00');
+    let remaining_balance = numeral(this.props.remaining_balance).divide(100).format('0,0.00');
     if (this.state.stripeLoading) {
       console.log("stripe loading!")
       return <div>Loading</div>;
@@ -93,16 +96,16 @@ var PaymentForm = React.createClass({
         <div id="payment-modal" className="modal">
           <div className="modal-header center-align">
             <h4>Make a payment</h4>
+            <span>{ this.state.paymentError }</span><br />
             <a href="#" className="modal-action modal-close waves-effect waves-light btn-flat"><i className="material-icons">clear</i></a>
           </div>
           <div className="modal-content">
             <div className="row">
-              <p>{ this.state.paymentError }</p>
               <form onSubmit={this.handleSubmit} className="col s12" id="addCart">
                 <div className="row">
                   <div className="input-field col s8 offset-s2">
-                    <input type='number' className="ccField" step="any" value={this.state.amount} onChange={this.handleAmountChange} /><br />
-                    <label htmlFor="email">Payment amount</label>
+                    <input type='number' name='amount' defaultValue={parseFloat(minimum_payment)} min={minimum_payment} max={remaining_balance} onChange={this.handleAmountChange} /><br />
+                    <label htmlFor="amount">Minimum payment: ${minimum_payment}</label>
                   </div>
                 </div>
                 <div className="row">

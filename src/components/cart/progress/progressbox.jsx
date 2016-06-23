@@ -28,7 +28,7 @@ export default class ProgressBox extends Component {
         </div>
 
         <ProgressBar progress={this.props.progress} />
-        <div><span>{this.props.progress}% of {numeral(this.props.totalCost).divide(100).format('$0,0.00')} goal</span></div>
+        <div><p className="flow-text">{this.props.progress}% of {numeral(this.props.totalCost).divide(100).format('$0,0.00')} goal</p></div>
       </div>
     )
   }

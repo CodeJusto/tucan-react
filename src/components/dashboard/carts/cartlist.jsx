@@ -13,8 +13,8 @@ export default class Cartlist extends Component {
     } else {
       return (
         <div className="cart-options">
-          <p><strong>You haven't created any carts yet!</strong></p>
-          <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="payment-modal">Get Started</a>
+          <p className="flow-text">You don't have any carts</p>
+          <a href="#" className="btn-rect btn-primary waves-effect waves-light modal-btn" data-modal="add-cart-modal">Get started</a>
         </div>
       )
     }
