@@ -7,7 +7,8 @@ import cookie from 'react-cookie';
 var CartViewContainer = React.createClass({
   getDefaultProps() {
     return {
-      title: 'Cart'
+      title: 'Cart - Tucan',
+      page: 'cart'
     };
   },
   render() {

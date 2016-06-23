@@ -9,6 +9,40 @@ require('expose?$!expose?jQuery!jquery'); //Required by Materialize
 require('../../lib/js-cookie.js');
 
 export default class Dashboard extends Component {
+  componentWillMount() {
+
+    var greetings = [
+        "Hello"
+      , "Ciao"
+      , "Welcome"
+      , "Howdy"
+      , "Greetings"
+      , "Salut"
+      , "Hallo"
+      , "Hola"
+      , "Hey"
+      , "Ahoy"
+    ];
+
+    var greeting_id = Math.floor(Math.random() * greetings.length);
+    this.greeting = greetings[greeting_id];
+
+    $(window).scroll(function(){
+      // current position
+      var cur_pos = $(this).scrollTop();
+
+      // scroll trigger menu
+      var showOn = $('.user-greeting').outerHeight() - $('nav').outerHeight() - 2;
+      if (cur_pos > showOn && !$("nav").hasClass('is-visible')) {
+          $("nav").addClass('is-visible');
+      } else {
+        if (cur_pos < showOn && $("nav").hasClass('is-visible')) {
+          $("nav").removeClass('is-visible');
+        }
+      }
+    });
+
+  }
 
   componentDidMount() {
     this.initialLoad = true;
@@ -23,6 +57,7 @@ export default class Dashboard extends Component {
 
   componentWillUnmount() {
     clearInterval(this._timer);
+
   }
 
   componentDidUpdate()
@@ -34,7 +69,22 @@ export default class Dashboard extends Component {
     } else {
       $('.cart-list > li').css('opacity', 1);
     }
+      $('.modal-btn').click(function(e){
+      e.preventDefault();
+      console.log('click');
+      var id = "#" + $(this).data('modal');
+      $(id).addClass('open').fadeIn();
+      $('#materialize-lean-overlay').addClass('open').fadeIn();
+    });
+
+    $('.modal-close').click(function(e){
+      e.preventDefault();
+      $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+      $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+    });
   }
+
+
 
   loadCartsFromServer() {
       // console.log(this.props)
@@ -54,6 +104,7 @@ export default class Dashboard extends Component {
   }
 
   render() {
+    
 
     if(!this.state) {
       return <div><h1>Loading....</h1></div>
@@ -63,8 +114,7 @@ export default class Dashboard extends Component {
       <div>
         <div className="row user-greeting">
           <div className="col s12 center-align toucan-bg">
-            <h1>Ahoy, {this.state.data.user.name}!</h1>
-
+            <h1>{this.greeting}, {this.state.data.user.name}!</h1>
           </div>
         </div>
 
@@ -72,7 +122,7 @@ export default class Dashboard extends Component {
           <Cartbox carts={this.state.data} />
         </div>
         <div>
-          <a href="#" className="btn-floating btn-large waves-effect waves-light pink modal-btn" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
+          <a href="#" className="modal-btn btn-floating btn-large waves-effect waves-light pink" id="new-cart-btn" data-modal="add-cart-modal"><i className="material-icons">add</i></a>  
           <AddCart user_id={this.props.user_id} />
         </div> 
       </div>  

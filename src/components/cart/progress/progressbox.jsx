@@ -14,16 +14,16 @@ export default class ProgressBox extends Component {
       <div className="cart-meta">
         <div className="cart-submeta">
           <h4>{(parseFloat(this.props.contributors) + 1)}</h4>
-          <span>contributers</span>
+          <span>contributors</span>
         </div>
 
         <div className="cart-submeta">
-          <h4>{moment(this.props.expiry).endOf('minute').fromNow(true)}</h4>
+          <h4>{moment(this.props.expiry).endOf('s').fromNow(true)}</h4>
           <span>remaining</span>
         </div>
 
         <div className="cart-submeta">
-          <h4>{numeral(this.props.totalPayment).divide(100).format('$0,0.00')}</h4>
+          <h4>{numeral(this.props.totalPayment).divide(100).format('$0,0')}</h4>
           <span>collected</span>
         </div>
 

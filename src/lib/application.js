@@ -20,7 +20,6 @@ window.fbAsyncInit = function() {
 
 $(function(){
 
-  // $('.modal-trigger').leanModal();
   // $('.modal-btn').click(function(e){
   //   e.preventDefault();
   //   console.log('click');
