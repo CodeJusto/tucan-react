@@ -49,23 +49,5 @@ $(function(){
     }
   );
 
-
-  $('.datepicker').pickadate({
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 5, // Creates a dropdown of 15 years to control year
-    container: 'body'  
-  });
-
-  $('#contribution>ul.tabs').tabs();
-
-  $('.collapsible').collapsible({
-    accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-  });
-
-// $("a[href='#top']").click(function() {
-//   $("html, body").animate({ scrollTop: 0 }, "slow");
-//   return false;
-// });
-
 });
 
