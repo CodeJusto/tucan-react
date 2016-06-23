@@ -47,10 +47,10 @@ var PaymentForm = React.createClass({
   },
 
   handleSubmit: function(e) {
-    let self = this;
     e.preventDefault();
+    let self = this;
     this.setState({ submitDisabled: true, paymentError: null });
-
+ 
     Stripe.createToken(e.target, (status, response) => {
       if (response.error) {
         self.setState({ paymentError: response.error.message, submitDisabled: false });
