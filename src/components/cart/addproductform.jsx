@@ -33,7 +33,6 @@ var AddProductForm = React.createClass({
           data: { display_name: this.state.display_name, url: this.state.url, quantity: this.state.quantity, id: this.props.user_id }
     }).done((response) => {
       console.log(response);
-      $('.productField').val('')
       $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
       $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
     })
@@ -50,9 +49,9 @@ var AddProductForm = React.createClass({
             <div className="row">
               <form className="col s12" id="addProduct" onSubmit={this.handleSubmit}>
                 <div className="row">
-                    <input type="text" name="display_name" className="productField" onChange={this.handleNameChange} />
                   <div className="input-field col s8"> 
-                    <input type="text" name="display_name" onChange={this.handleNameChange} />
+                    <input type="text" name="display_name" className="productField" onChange={this.handleNameChange} />
+
 
                     <label htmlFor="display_name">Product name</label>
                   </div>

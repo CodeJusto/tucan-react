@@ -81,8 +81,8 @@ export default class Cart extends Component {
       FacebookShareButton
     } = ShareButtons;
 
-    const shareUrl = 'http://github.com';
-    const title = 'GitHub';
+    const shareUrl = 'http://localhost:4000';
+    const title = 'Toucan';
     if(!this.state) {
       return <div><h1>Loading...</h1></div>
     }
