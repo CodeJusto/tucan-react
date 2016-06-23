@@ -64,10 +64,8 @@
     "react-cookie": "^0.4.7",
     "react-credit-card": "^0.10.0",
     "react-dom": "^0.14.6",
-    "react-facebook-login": "^3.0.0",
     "react-router": "^2.4.1",
     "react-share": "^1.8.0",
     "validator": "^5.4.0"
-    "react-facebook-login": "^3.0.0"
   }
 }
