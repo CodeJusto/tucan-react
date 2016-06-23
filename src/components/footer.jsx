@@ -7,8 +7,9 @@ export default class Footer extends Component {
         <div className="container">
           <div className="row">
             <div className="col l4 s12">
-              <h5 className="white-text">Logo goes here</h5>
-              <p className="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+              <a href="/dashboard" className="logo">
+                <img src="http://i.imgur.com/pk4uMob.png" /><h1>Tucan</h1>
+              </a>
             </div>
             <div className="col l3 offset-l2 s12">
               <h5 className="white-text">About Tucan</h5>
@@ -31,7 +32,6 @@ export default class Footer extends Component {
         <div className="footer-copyright">
           <div className="container">
           © 2016 Tucan, Inc. All Rights Reserved
-          <a className="grey-text text-lighten-4 right" href="#!">Social Media Links</a>
           </div>
         </div>
       </footer>
