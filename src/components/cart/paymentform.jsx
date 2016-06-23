@@ -103,7 +103,7 @@ var PaymentForm = React.createClass({
               <form onSubmit={this.handleSubmit} className="col s12" id="addCart">
                 <div className="row">
                   <div className="input-field col s8 offset-s2">
-                    <input type='number' name='amount' defaultValue={parseFloat(minimum_payment)} min={minimum_payment} max={remaining_balance} onChange={this.handleAmountChange} /><br />
+                    <input type='number' name='amount' min={minimum_payment} max={remaining_balance} onChange={this.handleAmountChange} /><br />
                     <label htmlFor="amount">Minimum payment: ${minimum_payment}</label>
                   </div>
                 </div>
