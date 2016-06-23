@@ -112,6 +112,12 @@ h6 {
 
 nav {
   background-color: $text-dark;
+  position: fixed;
+  z-index: 3;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 
   .logo {
     display: block;
@@ -148,6 +154,16 @@ nav {
     opacity: 1;
 
   }
+}
+
+.dashboard > nav {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.dashboard > nav.is-visible {
+  background-color: $text-dark;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
 .toucan-bg {
@@ -361,6 +377,13 @@ section#hero {
   position: fixed;
   bottom: 5%;
   right: 3%;
+}
+
+// cart page
+.cart {
+  .container {
+    padding-top: 30px + 64px;
+  }
 }
 
 #car-top {
