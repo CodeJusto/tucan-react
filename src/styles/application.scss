@@ -419,12 +419,12 @@ nav {
     span {
       color: $light-grey;
     }
-
-    .flow-text {
-      margin-top: 0;
-    }
   }
 
+  .flow-text {
+    margin-top: 0;
+  }
+  
   .progress {
     margin-top: 3rem;
   }
@@ -505,6 +505,7 @@ nav {
 
     .product-ops {
       display: none;
+      margin-top: 0.5rem;
     }
   }
 
@@ -516,7 +517,11 @@ nav {
 #payments {
   margin: 0;
   margin-top: 1.78rem;
-  // padding: 0;
+  padding: 0;
+
+  .cart-options {
+    margin: 0;
+  }
 
   .payment-entry {
     padding: 1rem;
