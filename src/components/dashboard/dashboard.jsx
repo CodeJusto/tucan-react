@@ -9,6 +9,54 @@ require('expose?$!expose?jQuery!jquery'); //Required by Materialize
 require('../../lib/js-cookie.js');
 
 export default class Dashboard extends Component {
+  componentWillMount() {
+
+    var greetings = [
+        "Hello"
+      , "Ciao"
+      , "Welcome"
+      , "Howdy"
+      , "Greetings"
+      , "Salut"
+      , "Hallo"
+      , "Hola"
+      , "Hey"
+      , "Ahoy"
+    ];
+
+    var greeting_id = Math.floor(Math.random() * greetings.length);
+    this.greeting = greetings[greeting_id];
+
+    $(window).scroll(function(){
+
+      // current position
+      var cur_pos = $(this).scrollTop();
+      console.log('cur ' + cur_pos);
+      // console.log($(window).innerHeight() + ' - ' + $('footer.page-footer').outerHeight());
+      // navbar
+      var showOn = $('.user-greeting').outerHeight() - $('nav').outerHeight() - 2;
+      if (cur_pos > showOn && !$("nav").hasClass('is-visible')) {
+          $("nav").addClass('is-visible');
+      } else {
+        if (cur_pos < showOn && $("nav").hasClass('is-visible')) {
+          $("nav").removeClass('is-visible');
+        }
+      }
+
+      // add new cart btn
+      var floatOn = $(document).innerHeight() - $(window).innerHeight() - $('footer.page-footer').innerHeight()/1.2;
+      console.log(floatOn);
+      if (cur_pos < floatOn && !$("#new-cart-btn").hasClass('is-floating')) {
+          $("#new-cart-btn").addClass('is-floating');
+      } else {
+        if (cur_pos > floatOn && $("#new-cart-btn").hasClass('is-floating')) {
+          $("#new-cart-btn").removeClass('is-floating');
+        }
+      }
+    });
+
+  }
+>>>>>>> feature/ui
 
   componentDidMount() {
     this.initialLoad = true;
@@ -49,8 +97,6 @@ export default class Dashboard extends Component {
       $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
     });
   }
-
-
 
   loadCartsFromServer() {
       // console.log(this.props)
