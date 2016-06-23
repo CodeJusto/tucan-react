@@ -12,7 +12,9 @@ export default class NotificationModal extends React.Component {
   emailSubmit = (e) => {
     e.preventDefault();
     var email = this.state.email;
+    console.log("Email!")
     if (!email) {
+      console.log("No email")
       return;
     }
     ajax({
@@ -24,6 +26,7 @@ export default class NotificationModal extends React.Component {
              email: email},
       success: data => {
         console.log(data)
+      $('.emailField').val('')
       }
     });
     console.log("Notifications")
@@ -42,7 +45,7 @@ export default class NotificationModal extends React.Component {
               <input className="emailField" name="email" type="text" onChange={this.emailHandler}/>
               <label htmlFor="email">Email</label>
             </div>
-            <input type="Submit" className="btn waves-effect waves-light modal-action modal-close" />
+            <input type="Submit" className="btn waves-effect waves-light" />
           </form>
         </div>
       </div>

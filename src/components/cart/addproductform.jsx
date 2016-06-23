@@ -4,6 +4,7 @@ import $ from 'jquery';
 var AddProductForm = React.createClass({
 
   getInitialState: function() {
+    
     return {
       display_name: '',
       url: '',
@@ -29,9 +30,11 @@ var AddProductForm = React.createClass({
           type: 'POST',
           dataType: 'json',
           url: 'http://localhost:4000/api/carts/' + this.props.cart_id + '/products',
-          data: { display_name: this.state.display_name, url: this.state.url, quantity: this.state.quantity }
+          data: { display_name: this.state.display_name, url: this.state.url, quantity: this.state.quantity, id: this.props.user_id }
     }).done((response) => {
       console.log(response);
+      $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+      $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
     })
   },
 
@@ -47,7 +50,9 @@ var AddProductForm = React.createClass({
               <form className="col s12" id="addProduct" onSubmit={this.handleSubmit}>
                 <div className="row">
                   <div className="input-field col s8"> 
-                    <input type="text" name="display_name" onChange={this.handleNameChange} />
+                    <input type="text" name="display_name" className="productField" onChange={this.handleNameChange} />
+
+
                     <label htmlFor="display_name">Product name</label>
                   </div>
                   <div className="input-field col s4"> 
@@ -57,11 +62,17 @@ var AddProductForm = React.createClass({
                 </div>
                 <div className="row">
                   <div className="input-field col s12"> 
-                    <input type="text" name="url" onChange={this.handleUrlChange} />
+                    <input type="text" name="url" className="productField" onChange={this.handleUrlChange} />
                     <label htmlFor="url">URL</label>
                   </div>
                 </div>
                 
+                <div className="row">
+                  <div className="input-field col s12"> 
+                    <input type="number" min="1" name="quantity" className="productField" onChange={this.handleQuantityChange} />
+                    <label htmlFor="quantity">Quantity</label>
+                  </div>
+                </div>
                 <div className="row">
                   <div className="input-field col s12 offset-s4"> 
                     <input type="submit" className="waves-effect waves-green btn-primary btn-flat" value="Add product" />

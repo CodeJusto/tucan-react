@@ -32,6 +32,20 @@ var PaymentForm = React.createClass({
     this.setState({amount: parseFloat(e.target.value) || 0 })
   },
 
+  componentWillUnmount: function() {
+    console.log("Unmounting!")
+  },
+
+  componentDidUpdate: function() {
+
+    if (this.state.paymentComplete) {
+      setTimeout(function() {
+        console.log("Timeout")
+        this.setState({paymentComplete: false})
+      }.bind(this), 1000)      
+    }
+  },
+
   handleSubmit: function(e) {
     let self = this;
     e.preventDefault();
@@ -49,6 +63,9 @@ var PaymentForm = React.createClass({
           data: { amount: this.state.amount, stripeToken: response.id, cart_id: this.props.cart_id, user_id: this.props.user_id }
         }).done((response) => {
           console.log(response);
+        $('.ccField').val('')
+        $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+        $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
         })
       }
     });
@@ -56,15 +73,19 @@ var PaymentForm = React.createClass({
 
   render: function() {
     if (this.state.stripeLoading) {
+      console.log("stripe loading!")
       return <div>Loading</div>;
     }
     else if (this.state.stripeLoadingError) {
+      console.log("stripe loading error!")
       return <div>Error</div>;
     }
     else if (this.state.paymentComplete) {
+      console.log("stripe payment complete!")
       return <div>Payment Complete!</div>;
     }
     else {
+      console.log("The correct one!")
       return (
         <div id="payment-modal" className="modal">
           <div className="modal-header center-align">
@@ -77,13 +98,13 @@ var PaymentForm = React.createClass({
               <form onSubmit={this.handleSubmit} className="col s12" id="addCart">
                 <div className="row">
                   <div className="input-field col s8 offset-s2">
-                    <input type='number' step="any" value={this.state.amount} onChange={this.handleAmountChange} /><br />
+                    <input type='number' className="ccField" step="any" value={this.state.amount} onChange={this.handleAmountChange} /><br />
                     <label htmlFor="email">Payment amount</label>
                   </div>
                 </div>
                 <div className="row">
                   <div className="input-field col s8 offset-s2">
-                    <input type='text' data-stripe='number' /><br />
+                    <input className="ccField" type='text' data-stripe='number' /><br />
                     <label htmlFor="number">Credit card number</label>
                   </div>
                 </div>
@@ -92,15 +113,15 @@ var PaymentForm = React.createClass({
                     <p>GOOD THRU<i className="material-icons tiny">play_arrow</i></p>
                   </div>
                   <div className="input-field col s1">
-                    <input type='text' data-stripe='exp-month' />
+                    <input type='text' className="ccField" data-stripe='exp-month' />
                     <label htmlFor="exp-month">MM</label>
                   </div>
                   <div className="input-field col s1">
-                    <input type='text' data-stripe='exp-year' /><br />
+                    <input type='text' className="ccField" data-stripe='exp-year' /><br />
                     <label htmlFor="exp-year">YY</label>
                   </div>
                   <div className="input-field col s2 offset-s2">
-                    <input type='text' data-stripe='cvc' /><br />
+                    <input type='text' className="ccField" data-stripe='cvc' /><br />
                     <label htmlFor="cvc">CVC</label>
                   </div>
                 </div>

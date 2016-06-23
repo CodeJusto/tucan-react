@@ -24,6 +24,7 @@ var AddCart = React.createClass({
   },
 
   handleSubmit: function(e) {
+    console.log("new cart")
     e.preventDefault();
     $.ajax({
           type: 'POST',
@@ -40,7 +41,13 @@ var AddCart = React.createClass({
                   province: this.state.province,
                   zip_code: this.state.zip_code
                 }),
-          contentType: "application/json"
+          contentType: "application/json",
+          success: data => {
+            console.log(data);
+              $('.productField').val('')
+              $('.modal').fadeOut(600, function(){$(this).removeClass('open')});
+              $('#materialize-lean-overlay').fadeOut(800, function(){$(this).removeClass('open')});
+          }
     });
     // Add some code that will reset the values of the form
   },
