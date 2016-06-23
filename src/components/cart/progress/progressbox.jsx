@@ -18,7 +18,7 @@ export default class ProgressBox extends Component {
         </div>
 
         <div className="cart-submeta">
-          <h4>{moment(this.props.expiry).endOf('s').fromNow(true)}</h4>
+          <h4>{moment(this.props.expiry).endOf('second').fromNow(true)}</h4>
           <span>remaining</span>
         </div>
 
@@ -28,7 +28,7 @@ export default class ProgressBox extends Component {
         </div>
 
         <ProgressBar progress={this.props.progress} />
-        <div><span>{this.props.progress}% of {numeral(this.props.totalCost).divide(100).format('$0,0.00')} goal</span></div>
+        <div><p className="flow-text">{this.props.progress}% of {numeral(this.props.totalCost).divide(100).format('$0,0.00')} goal</p></div>
       </div>
     )
   }

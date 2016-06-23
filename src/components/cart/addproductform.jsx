@@ -66,13 +66,6 @@ var AddProductForm = React.createClass({
                     <label htmlFor="url">URL</label>
                   </div>
                 </div>
-                
-                <div className="row">
-                  <div className="input-field col s12"> 
-                    <input type="number" min="1" name="quantity" className="productField" onChange={this.handleQuantityChange} />
-                    <label htmlFor="quantity">Quantity</label>
-                  </div>
-                </div>
                 <div className="row">
                   <div className="input-field col s12 offset-s4"> 
                     <input type="submit" className="waves-effect waves-green btn-primary btn-flat" value="Add product" />

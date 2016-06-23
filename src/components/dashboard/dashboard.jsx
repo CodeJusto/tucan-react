@@ -14,14 +14,14 @@ export default class Dashboard extends Component {
     var greetings = [
         "Hello"
       , "Ciao"
-      , "Welcome"
       , "Howdy"
-      , "Greetings"
       , "Salut"
       , "Hallo"
       , "Hola"
       , "Hey"
       , "Ahoy"
+      , "Hi"
+      , "Aloha"
     ];
 
     var greeting_id = Math.floor(Math.random() * greetings.length);
